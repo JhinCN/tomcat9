@@ -19,43 +19,42 @@
 
   <!-- ===================== Initialize Property Values ==================== -->
 
-  <!-- We read customizable properties from "build.properties.default"       -->
-  <!-- and also from "build.properties" if it exists.                        -->
-  <!-- The values in "build.properties" have stronger preference.            -->
-  <!-- If you want to customize your build, you can either change the values -->
-  <!-- directly in the default file, or create a new build.properties and    -->
-  <!-- set the values there. This way you don't have to change a file which  -->
-  <!-- is part of the original project source code.                          -->
-  <!-- See "build.properties.default" in the top level directory for some    -->
-  <!-- property values you may customize.                                    -->
+  <!-- 我们从"build.properties.default"中读取可定制的属性,                       -->
+  <!-- 如果build.properties文件存在，也从"build.properties"中读取                -->
+  <!-- "build.properties"中的值有更高权重的偏好设置                              -->
+  <!-- 如果要定制编译，可以直接在默认文件中更改值                                   -->
+  <!-- 或者创建新的build.properties并在其中设置值                                -->
+  <!-- 这样，您不必更改原始项目源代码的一部分的文件                                 -->
+  <!-- 请参阅顶级目录中的“build.properties.default”以了解您可以自定义的一些属性值    -->
+
   <property file="${user.home}/build.properties"/>
   <property file="build.properties"/>
   <property file="build.properties.default"/>
 
-  <!-- Project Name -->
+  <!-- 项目名称 -->
   <property name="project"               value="apache-tomcat" />
 
-  <!-- Version numbers -->
+  <!--版本号 -->
   <property name="version"               value="${version.major}.${version.minor}.${version.build}${version.suffix}" />
   <property name="version.number"        value="${version.major}.${version.minor}.${version.build}.${version.patch}" />
   <property name="version.major.minor"   value="${version.major}.${version.minor}" />
 
-  <!-- constant to declare a file binary for md5sum -->
+  <!-- 为md5sum声明一个二进制常量文件 -->
   <property name="md5sum.binary-prefix" value=" *" />
 
-  <!-- Exact spec versions (for the manifests) -->
+  <!-- 确切的规格版本（用于清单(manifests)） -->
   <property name="servlet.revision" value="FR" />
   <property name="jsp.revision" value="FR" />
   <property name="el.revision" value="FR" />
   <property name="websocket.revision" value="FR" />
-  <!-- MR B but this was first 1.1 release so use FR -->
+  <!-- MR B，但这是第一次发布1.1，因此使用FR -->
   <property name="jaspic.revision" value="FR" />
 
-  <!-- Release artifact base names -->
+  <!-- 发行工件基本名称 -->
   <property name="final.name"            value="${project}-${version}" />
   <property name="final-src.name"        value="${project}-${version}-src" />
 
-  <!-- Locations to create build artifacts -->
+  <!-- 创建编译工件的位置 -->
   <property name="tomcat.home"           value="${basedir}"/>
   <property name="tomcat-nb.home"        value="${basedir}/nbproject" />
   <property name="tomcat.output"         value="${basedir}/output"/>
@@ -76,17 +75,17 @@
   <property name="test.basedir"          value="${tomcat.build}"/>
   <property name="test.reports"          value="${test.basedir}/logs"/>
   <property name="test.apr.loc"          value="${test.basedir}/bin/native"/>
-  <!-- base directory for jdbc-pool -->
+  <!-- jdbc-pool线程池的基本目录 -->
   <property name="tomcat.jdbc.dir"       value="${basedir}/modules/jdbc-pool"/>
-  <!-- build output directory for jdbc-pool -->
+  <!-- jdbc-pool线程池的编译输出目录 -->
   <property name="tomcat.pool"           value="${tomcat.output}/jdbc-pool"/>
 
-  <!-- Servlet 4.0 spec requires 1.8+ -->
+  <!-- Servlet 4.0规范要求 JDK1.8+ -->
   <property name="compile.source" value="1.8"/>
   <property name="compile.target" value="1.8"/>
 
-  <!-- Locations to create the JAR artifacts -->
-  <!-- Standard JARs -->
+  <!-- 创建JAR工件的位置 -->
+  <!-- 标准JAR -->
   <property name="bootstrap.jar" value="${tomcat.build}/bin/bootstrap.jar"/>
   <property name="tomcat-juli.jar" value="${tomcat.build}/bin/tomcat-juli.jar"/>
 
@@ -112,7 +111,7 @@
   <property name="jasper.jar" value="${tomcat.build}/lib/jasper.jar"/>
   <property name="jasper-el.jar" value="${tomcat.build}/lib/jasper-el.jar"/>
 
-  <!-- Standard Source JARs -->
+  <!-- 标准 源代码 JAR -->
   <property name="bootstrap-src.jar" value="${tomcat.src.jars}/bootstrap-src.jar"/>
   <property name="tomcat-juli-src.jar" value="${tomcat.src.jars}/tomcat-juli-src.jar"/>
 
@@ -138,7 +137,7 @@
   <property name="jasper-src.jar" value="${tomcat.src.jars}/jasper-src.jar"/>
   <property name="jasper-el-src.jar" value="${tomcat.src.jars}/jasper-el-src.jar"/>
 
-  <!-- Embedded JARs & source JARs -->
+  <!-- 嵌入式JAR & 源代码JAR -->
   <property name="tomcat-embed-core.jar" value="${tomcat.embed}/tomcat-embed-core.jar"/>
   <property name="tomcat-embed-jasper.jar" value="${tomcat.embed}/tomcat-embed-jasper.jar"/>
   <property name="tomcat-embed-el.jar" value="${tomcat.embed}/tomcat-embed-el.jar"/>
@@ -149,43 +148,43 @@
   <property name="tomcat-embed-el-sources.jar" value="${tomcat.embed.sources}/tomcat-embed-el-src.jar"/>
   <property name="tomcat-embed-websocket-sources.jar" value="${tomcat.embed.sources}/tomcat-embed-websocket-src.jar"/>
 
-  <!-- Extras JARs & source JARs -->
+  <!-- 额外的JAR & 源代码JAR -->
   <property name="catalina-ws.jar" value="${tomcat.extras}/catalina-ws.jar"/>
   <property name="catalina-jmx-remote.jar" value="${tomcat.extras}/catalina-jmx-remote.jar"/>
 
   <property name="catalina-ws-src.jar" value="${tomcat.extras.sources}/catalina-ws-src.jar"/>
   <property name="catalina-jmx-remote-src.jar" value="${tomcat.extras.sources}/catalina-jmx-remote-src.jar"/>
 
-  <!-- jdbc-pool JARs & source JARs -->
+  <!-- jdbc-pool线程池 JAR & 源代码JAR -->
   <property name="tomcat-jdbc.jar" value="${tomcat.pool}/tomcat-jdbc.jar"/>
   <property name="tomcat-jdbc-src.jar" value="${tomcat.pool}/tomcat-jdbc-src.jar"/>
 
-  <!-- Tests To Run -->
+  <!-- 测试运行 -->
   <property name="test.name" value="**/Test*.java"/>
   <property name="test.formatter" value="-Dorg.apache.juli.formatter=java.util.logging.SimpleFormatter"/>
   <property name="test.relaxTiming" value="false"/>
 
-  <!-- Cobertura code coverage settings -->
+  <!-- Cobertura代码覆盖(code coverage)设置 -->
   <property name="cobertura.out" value="${tomcat.output}/coverage"/>
   <property name="cobertura.datafile" value="${cobertura.out}/cobertura.ser"/>
   <property name="tomcat.classes.cobertura" value="${tomcat.classes}-cobertura"/>
   <property name="cobertura.report.format" value="html"/>
 
-  <!-- FindBugs settings -->
+  <!-- FindBugs 设置 -->
   <property name="findbugs.out" value="${tomcat.output}/findbugs"/>
   <property name="findbugs.report.format" value="html"/>
   <property name="findbugs.report.level" value="low"/>
 
-  <!-- Workaround against http://bugs.sun.com/view_bug.do?bug_id=6202721 -->
+  <!-- 针对 http://bugs.sun.com/view_bug.do?bug_id=6202721 的解决办法 -->
   <available file="/dev/urandom" property="test.jvmarg.egd" value="-Djava.security.egd=file:/dev/./urandom"/>
   <property name="test.jvmarg.egd" value="" />
 
-  <!-- Location of OpenSSL binary (file name, not directory) -->
-  <!-- The OpenSSL tests cases be disabled by specifying an invalid path here -->
+  <!-- OpenSSL二进制文件的位置（文件名，不是目录） -->
+  <!-- 通过在这里指定一个无效路径来禁用OpenSSL测试用例 -->
   <property name="test.openssl.path" value="" />
 
-  <!-- Include .gitignore in src distributions. -->
-  <!-- .git and .gitignore are in defaultexcludes since Ant 1.8.2 -->
+  <!-- 在src发行版中包含.gitignore -->
+  <!-- .git和.gitignore从Ant 1.8.2开始就在defaultexcludes中 -->
   <defaultexcludes add="**/.git" />
   <defaultexcludes add="**/.git/**" />
   <defaultexcludes remove="**/.gitignore" />
@@ -226,7 +225,7 @@
     </fileset>
   </path>
 
-  <!-- Version info filter set -->
+  <!-- 版本信息过滤器集 -->
   <tstamp>
     <format property="year" pattern="yyyy" locale="en" timezone="UTC"/>
     <format property="today" pattern="MMM d yyyy" locale="en" timezone="UTC"/>
@@ -243,7 +242,7 @@
     <filter token="JDT_VERSION" value="${jdt.version}"/>
   </filterset>
 
-  <!-- Files to change line endings for depending on target platform -->
+  <!-- 根据目标平台更改行尾的文件 -->
   <patternset id="text.files" >
     <include name="**/INSTALLLICENSE"/>
     <include name="**/KEYS"/>
@@ -291,15 +290,15 @@
     <include name="**/*.xml"/>
     <include name="**/*.xsd"/>
     <include name="**/*.xsl"/>
-    <!-- Exclude files that use 16-bit encodings. -->
-    <!-- This prevents fixcrlf corrupting them during a release -->
+    <!-- 排除使用16位(16-bit)编码的文件。 -->
+    <!-- 这可以防止fixcrlf在发布期间破坏它们 -->
     <exclude name="**/bom-none-prolog-utf16?e.jspx"/>
     <exclude name="**/bom-utf16?e-prolog-*.jsp*"/>
   </patternset>
 
 
-  <!-- ========= Pattern sets used to control content of JAR files ========= -->
-  <!-- Pattern sets for jar files in standard distributions -->
+  <!-- ========= 用于控制JAR文件内容的模式集 ========= -->
+  <!-- 模式为标准分发中的jar文件设置 -->
   <patternset id="files.annotations-api">
     <include name="javax/annotation/**" />
   </patternset>
@@ -394,7 +393,7 @@
   <patternset id="files.catalina">
     <include name="org/apache/catalina/**" />
     <include name="org/apache/naming/**" />
-    <!-- Modules -->
+    <!-- 模块 -->
     <exclude name="org/apache/catalina/ant/**" />
     <exclude name="org/apache/catalina/ha/**" />
     <exclude name="org/apache/catalina/mbeans/JmxRemote*" />
@@ -425,7 +424,7 @@
 
   <patternset id="files.tomcat-coyote">
     <include name="org/apache/coyote/**" />
-    <!-- Remaining tomcat-util packages -->
+    <!-- 剩余的tomcat-util包 -->
     <include name="org/apache/tomcat/util/bcel/**" />
     <include name="org/apache/tomcat/util/http/**" />
     <include name="org/apache/tomcat/util/log/**" />
@@ -445,15 +444,15 @@
     <include name="org/apache/tomcat/dbcp/**"/>
   </patternset>
 
-  <!-- Pattern sets for embedded JARs -->
-  <!-- Every standard pattern set above should be included in an embedded JAR -->
+  <!-- 嵌入式JAR的模式集 -->
+  <!-- 以上的每个标准模式设置都应该包含在嵌入式JAR中 -->
   <patternset id="files.tomcat-embed-core" >
     <patternset refid="files.catalina" />
     <patternset refid="files.servlet-api" />
     <patternset refid="files.jaspic-api" />
     <patternset refid="files.tomcat-api" />
     <patternset refid="files.tomcat-juli" />
-    <!-- These pattern sets conflict so include files directly
+    <!-- 这些模式设置冲突，因此直接打包到文件中
       <patternset refid="files.tomcat-coyote" />
       <patternset refid="files.tomcat-util" />
       <patternset refid="files.tomcat-util-scan" />
@@ -479,17 +478,17 @@
     <patternset refid="files.tomcat-websocket" />
   </patternset>
 
-  <!-- Pattern sets not included in embedded -->
-    <!-- Cluster support not included in embedded -->
+  <!-- 模式集不包含在嵌入式中 -->
+    <!-- 集群支持不包含在嵌入式中 -->
     <!--<patternset refid="files.catalina-tribes" />-->
     <!--<patternset refid="files.catalina-ha" />-->
-    <!-- Ant tasks not included in embedded -->
+    <!-- 嵌入式中不包含Ant任务 -->
     <!--<patternset refid="files.catalina-ant" />-->
-    <!-- Annotations API is a separate dependency to avoid JRE 9 issues -->
+    <!-- 注释(Annotations)API是一个独立的依赖项，以避免JRE 9问题 -->
     <!-- See BZ 61439 -->
     <!--<patternset refid="files.annotations-api" />-->
 
-  <!-- Pattern sets for extras JARs -->
+  <!-- 特殊JAR的模式集 -->
   <patternset id="files.tomcat-extras-ws">
     <include name="org/apache/naming/factory/webservices/**" />
   </patternset>
@@ -498,18 +497,18 @@
     <include name="org/apache/catalina/mbeans/JmxRemote*" />
   </patternset>
 
-  <!-- =========================== Build targets =========================== -->
+  <!-- ========================= 编译目标(Build targets) ========================= -->
 
   <target name="build-prepare">
 
-    <!-- Required so we can compile -->
+    <!-- 所以我们可以编译 -->
     <mkdir dir="${tomcat.classes}"/>
 
-    <!-- Ensure these directories are removed every time we re-build -->
+    <!-- 确保每次重新编译时都会删除这些目录 -->
     <delete dir="${tomcat.build}/temp" />
     <delete dir="${tomcat.build}/work" />
 
-    <!-- Minimum dirs needed for a working Tomcat instance -->
+    <!-- 运行中的Tomcat实例必须的目录 -->
     <mkdir dir="${tomcat.build}"/>
     <mkdir dir="${tomcat.build}/bin"/>
     <mkdir dir="${tomcat.build}/conf"/>
@@ -518,7 +517,7 @@
     <mkdir dir="${tomcat.build}/temp"/>
     <mkdir dir="${tomcat.build}/webapps"/>
 
-    <!-- Property that determines if manifests need updating -->
+    <!-- 确定清单是否有需要更新的属性 -->
     <uptodate property="manifests.uptodate"
         targetfile="${tomcat.manifests}/default.manifest" >
       <srcfiles file="${user.home}/build.properties" />
@@ -537,7 +536,7 @@
   <target name="validate" if="${execute.validate}"
     depends="build-prepare,compile-prepare,download-validate"
     description="Uses Checkstyle tool to perform style check for the source code">
-    <!-- Required so we can cache checkstyle results -->
+    <!-- 所以我们必须可以缓存checkstyle结果 -->
     <mkdir dir="${tomcat.output}/res/checkstyle"/>
     <available property="checkstyletask.properties" resource="checkstyletask.properties"
        classpath="${checkstyle.jar}" value="checkstyletask.properties"/>
@@ -561,21 +560,21 @@
         <exclude name="**/*.svg"/>
         <exclude name="**/*_2.xml"/>
         <exclude name="res/checkstyle/header-al2.txt"/>
-        <!-- Exclude auto-generated files -->
+        <!-- 排除自动生成的文件 -->
         <exclude name="java/org/apache/el/parser/ELParser*.java" />
         <exclude name="java/org/apache/el/parser/Node.java" />
         <exclude name="java/org/apache/**/parser/JJT*ParserState.java" />
         <exclude name="java/org/apache/**/parser/ParseException.java" />
         <exclude name="java/org/apache/**/parser/SimpleCharStream.java" />
         <exclude name="java/org/apache/**/parser/Token*.java" />
-        <!-- Exclude simple test files -->
+        <!-- 排除简单的测试文件 -->
         <exclude name="test/webapp/bug53257/**/*.txt"/>
         <exclude name="test/webapp/bug49nnn/bug49464*"/>
         <exclude name="test/webapp-fragments/WEB-INF/classes/*.txt"/>
         <exclude name="test/webresources/**"/>
-        <!-- Exclude test files with unusual encodings -->
+        <!-- 排除特殊的编码测试文件 -->
         <exclude name="test/webapp/jsp/encoding/**"/>
-        <!-- Exclude developer specific local files -->
+        <!-- 排除开发人员自定义的本地文件 -->
         <exclude name="build.properties" />
         <exclude name="res/maven/mvn.properties" />
       </fileset>
@@ -586,13 +585,13 @@
         <patternset refid="text.files" />
       </fileset>
     </checkstyle>
-    <!-- javax package checks -->
+    <!-- 检查javax包 -->
     <checkstyle config="res/checkstyle/javax-checkstyle.xml">
       <fileset dir="java/javax" >
         <include name="**/*.java"/>
       </fileset>
     </checkstyle>
-    <!-- org package checks -->
+    <!-- 检查org包 -->
     <checkstyle config="res/checkstyle/org-checkstyle.xml">
       <fileset dir="java/org" >
         <include name="**/*.java"/>
@@ -602,10 +601,9 @@
 
   <target name="validate-eoln" depends="build-prepare,compile-prepare"
     description="Validate that the source files have correct line ends">
-    <!-- Compile the CheckEol class only. Note that the class depends on
-    Ant only. There is no need to download additional dependencies nor
-    add them to the class path. The rest should be the same as in "compile"
-    target.-->
+    <!-- 仅编译CheckEol类。请注意，该类仅依赖于Ant。
+         无需下载其他依赖项，也不需要将它们添加到类路径(classpath)中。
+         其余部分应与“编译(compile)”目标相同。 -->
     <javac srcdir="java" destdir="${tomcat.classes}"
            debug="${compile.debug}"
            deprecation="${compile.deprecation}"
@@ -614,7 +612,7 @@
            excludes="**/.svn/**"
            encoding="ISO-8859-1"
            includeAntRuntime="true" >
-      <!-- Uncomment this to show unchecked warnings:
+      <!-- 取消注释以显示未经检查的警告：
       <compilerarg value="-Xlint:unchecked"/>
       -->
       <include name="org/apache/tomcat/buildutil/CheckEol*" />
@@ -633,8 +631,7 @@
         <exclude name="nbproject/**"/>
         <exclude name="output/**"/>
         <exclude name="modules/**"/>
-        <!-- Exclude these since some svn clients do not seem able to handle
-             UTF-16 line-ending conversion -->
+        <!-- 排除这些因为一些svn客户端似乎不能处理UTF-16行结束转换(line-ending conversion) -->
         <exclude name="test/webapp/jsp/encoding/bom-utf16*"/>
         <exclude name="test/webapp/jsp/encoding/bom-none-prolog-utf16*"/>
       </fileset>
@@ -645,12 +642,12 @@
   </target>
 
   <target name="compile-prepare">
-    <!-- Add the builtin catalina.properties -->
+    <!-- 添加内建的catalina.properties -->
     <copy todir="java/org/apache/catalina/startup"
           file="conf/catalina.properties" encoding="ISO-8859-1">
       <filterset refid="version.filters"/>
     </copy>
-    <!-- Copy jdbc-pool documentation -->
+    <!-- 复制jdbc-pool文档 -->
     <copy tofile="webapps/docs/jdbc-pool.xml"
           file="${tomcat.jdbc.dir}/doc/jdbc-pool.xml" encoding="UTF-8">
       <filterset>
@@ -660,7 +657,7 @@
   </target>
 
   <target name="compile" depends="download-compile,validate">
-    <!-- Compile internal server components -->
+    <!-- 编译内部服务器组件 -->
     <javac srcdir="java" destdir="${tomcat.classes}"
            debug="${compile.debug}"
            deprecation="${compile.deprecation}"
@@ -669,13 +666,13 @@
            excludes="**/.svn/**"
            encoding="ISO-8859-1"
            includeAntRuntime="true" >
-      <!-- Uncomment this to show unchecked warnings:
+      <!-- 取消注释以显示未经检查的警告：
       <compilerarg value="-Xlint:unchecked"/>
       -->
       <classpath refid="compile.classpath" />
       <exclude name="org/apache/naming/factory/webservices/**" />
     </javac>
-    <!-- Copy static resource files -->
+    <!-- 复制静态资源文件 -->
     <copy todir="${tomcat.classes}" encoding="ISO-8859-1">
       <filterset refid="version.filters"/>
       <fileset dir="java">
@@ -693,7 +690,7 @@
 
   <target name="build-manifests" unless="manifests.uptodate"
           depends="build-prepare">
-    <!-- Filtering tokens for JAR manifests-->
+    <!-- 为jar清单过滤令牌(Filtering tokens for JAR manifests)-->
     <filter token="source.jdk" value="${compile.source}"/>
     <filter token="target.jdk" value="${compile.target}"/>
     <filter token="servlet.revision" value="${servlet.revision}"/>
@@ -712,13 +709,13 @@
   </target>
 
   <target name="package" depends="compile,build-manifests" >
-    <!-- Common Annotations 1.0 JAR File -->
+    <!--常见注释(Common Annotations)1.0 JAR 文件 -->
     <jarIt jarfile="${annotations-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.annotations-api"
       manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
 
-    <!-- Servlet 4.0 Implementation JAR File -->
+    <!-- Servlet 4.0 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${servlet-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.servlet-api"
@@ -726,88 +723,88 @@
       notice="${tomcat.manifests}/servlet-api.jar.notice"
       license="${tomcat.manifests}/servlet-api.jar.license" />
 
-    <!-- JSP 2.3 Implementation JAR File -->
+    <!-- JSP 2.3 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jsp-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.jsp-api"
       manifest="${tomcat.manifests}/jsp-api.jar.manifest" />
 
-    <!-- EL 3.0 Implementation JAR File -->
+    <!-- EL 3.0 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${el-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.el-api"
       manifest="${tomcat.manifests}/el-api.jar.manifest" />
 
-    <!-- WebSocket 1.1 API JAR File -->
+    <!-- WebSocket 1.1 API JAR 文件 -->
     <jarIt jarfile="${websocket-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.websocket-api"
       manifest="${tomcat.manifests}/websocket-api.jar.manifest" />
 
-    <!-- JASPIC 1.1 API JAR File -->
+    <!-- JASPIC 1.1 API JAR 文件 -->
     <jarIt jarfile="${jaspic-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.jaspic-api"
       manifest="${tomcat.manifests}/jaspic-api.jar.manifest" />
 
-    <!-- WebSocket 1.1 implementation JAR File -->
+    <!-- WebSocket 1.1 实现(implementation) JAR 文件 -->
     <jarIt jarfile="${tomcat-websocket.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-websocket"
       meta-inf="${tomcat.manifests}/tomcat-websocket.jar"/>
 
-    <!-- Bootstrap JAR File -->
+    <!-- Bootstrap JAR 文件 -->
     <jarIt jarfile="${bootstrap.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.bootstrap"
       manifest="${tomcat.manifests}/bootstrap.jar.manifest" />
 
-    <!-- Tomcat-juli JAR File -->
+    <!-- Tomcat-juli JAR 文件 -->
     <jarIt jarfile="${tomcat-juli.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-juli" />
 
-    <!-- Catalina Main JAR File -->
+    <!-- Catalina Main JAR 文件 -->
     <jarIt jarfile="${catalina.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.catalina" />
 
-    <!-- Catalina GroupCom/Tribes JAR File -->
+    <!-- Catalina GroupCom/Tribes JAR 文件 -->
     <jarIt jarfile="${catalina-tribes.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.catalina-tribes" />
 
-    <!-- Catalina Cluster/HA JAR File -->
+    <!-- Catalina Cluster/HA(高可用) JAR 文件 -->
     <jarIt jarfile="${catalina-ha.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.catalina-ha" />
 
-    <!-- Catalina Ant Tasks JAR File -->
+    <!-- Catalina Ant 任务 JAR 文件 -->
     <jarIt jarfile="${catalina-ant.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.catalina-ant" />
 
-    <!-- Catalina Storeconfig JAR File -->
+    <!-- Catalina 存储配置(Storeconfig) JAR 文件 -->
     <jarIt jarfile="${catalina-storeconfig.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.catalina-storeconfig" />
 
-    <!-- Tomcat API JAR File -->
+    <!-- Tomcat API JAR 文件 -->
     <jarIt jarfile="${tomcat-api.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-api" />
 
-    <!-- Tomcat Util JAR File -->
+    <!-- Tomcat Util JAR 文件 -->
     <jarIt jarfile="${tomcat-util.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-util" />
 
-    <!-- Tomcat Util Scan JAR File -->
+    <!-- Tomcat Util 扫描(scan) JAR 文件 -->
     <jarIt jarfile="${tomcat-util-scan.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-util-scan" />
 
-    <!-- Protocol handlers - Coyote -->
+    <!-- 协议处理程序(Protocol handlers) - Coyote -->
     <jarIt jarfile="${tomcat-coyote.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-coyote" />
@@ -816,18 +813,18 @@
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-jni" />
 
-    <!-- Jasper Implementation JAR File -->
+    <!-- Jasper 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jasper.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.jasper"
       meta-inf="${tomcat.manifests}/jasper.jar"/>
 
-    <!-- Jasper EL Implementation JAR File -->
+    <!-- Jasper EL 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jasper-el.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.jasper-el" />
 
-    <!-- Re-packaged Apache Commons DBCP-->
+    <!-- 重新打包Apache Commons DBCP-->
     <jarIt jarfile="${tomcat-dbcp.jar}"
       filesDir="${tomcat.classes}"
       filesId="files.tomcat-dbcp" />
@@ -904,7 +901,7 @@
 
     <mkdir dir="${tomcat.build}/webapps/docs/funcspecs" />
 
-    <!-- XSL processing -->
+    <!-- XSL 处理(processing) -->
     <xslt basedir="webapps/docs"
            destdir="${tomcat.build}/webapps/docs"
          extension=".html"
@@ -1015,7 +1012,7 @@
 
     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
 
-    <!-- Copy scripts -->
+    <!-- 拷贝脚本(Copy scripts) -->
     <copy todir="${tomcat.build}/bin">
       <fileset dir="bin">
          <exclude name="**/*.launch"/>
@@ -1030,10 +1027,10 @@
          <include name="**/*.bat"/>
       </fileset>
     </copy>
-    <!-- Copy doesn't retain permissions -->
+    <!--复制不保留权限 -->
     <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/>
 
-    <!-- Copy static resource files -->
+    <!-- 复制静态资源文件 -->
     <copy todir="${tomcat.build}/conf" encoding="ISO-8859-1">
       <filterset refid="version.filters"/>
       <fileset dir="conf">
@@ -1044,7 +1041,7 @@
       </fileset>
     </copy>
 
-    <!-- Copy other regular webapps -->
+    <!-- 复制其他常规的webapps -->
     <copy todir="${tomcat.build}/webapps">
       <fileset dir="webapps">
         <include name="ROOT/**"/>
@@ -1065,7 +1062,7 @@
       <filterset refid="version.filters"/>
     </copy>
 
-    <!-- Delete all other versions of Eclipse JDT Compiler and copy the current one -->
+    <!-- 删除Eclipse JDT Compiler的所有其他版本并复制当前版本 -->
     <local name="jdt.jar.filename" />
     <basename property="jdt.jar.filename" file="${jdt.jar}"/>
     <delete verbose="true">
@@ -1076,13 +1073,13 @@
     </delete>
     <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
 
-    <!-- Add sources for examples -->
+    <!-- 添加示例的源代码 -->
     <antcall target="examples-sources" />
   </target>
 
   <target name="compile-webapp-examples" >
 
-    <!-- Build classes for examples webapp -->
+    <!--为示例webapp编译类 -->
     <mkdir dir="${tomcat.build}/webapps/examples/WEB-INF/classes"/>
     <javac   srcdir="webapps/examples/WEB-INF/classes"
              destdir="${tomcat.build}/webapps/examples/WEB-INF/classes"
@@ -1109,7 +1106,7 @@
   </target>
 
   <target name="build-tomcat-jdbc" depends="package">
-    <!-- build the jdbc-pool jar and source jar-->
+    <!-- 编译jdbc-pool jar和源代码jar-->
     <echo message="Building Tomcat JDBC pool libraries"/>
     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
          inheritAll="false" target="build">
@@ -1124,7 +1121,7 @@
   </target>
 
   <target name="build-tomcat-jdbc-src">
-    <!-- build the jdbc-pool source jar-->
+    <!-- 编译jdbc-pool源码jar-->
     <echo message="Building Tomcat JDBC pool src JAR"/>
     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
          inheritAll="false" target="build-src">
@@ -1232,9 +1229,8 @@
     <copy file="${jdt.jar}" todir="${tomcat.embed}" />
     <copy file="${annotations-api.jar}" todir="${tomcat.embed}" />
 
-    <!-- Note the meta-inf below will work as long as there is only one JAR
-         that needs to add entries. If there is more than one a more complex
-         solution will be required. -->
+    <!-- 请注意，只要有一个需要添加条目(add entries)的JAR，下面的meta-inf就会工作。 
+         如果有多个解决方案(complex solution)需要更复杂的解决方案。 -->
     <jarIt jarfile="${tomcat-embed-core.jar}"
            filesDir="${tomcat.classes}"
            filesId="files.tomcat-embed-core"
@@ -1277,7 +1273,7 @@
 
     <copy file="${tomcat-dbcp-src.jar}" todir="${tomcat.embed.sources}" />
 
-    <!--No sources for ${jdt.jar} -->
+    <!-- 没有 ${jdt.jar} 的源代码-->
 
   </target>
 
@@ -1322,7 +1318,7 @@
 
   <target name="test-compile" depends="compile,download-test-compile,compile-webapp-examples" >
     <mkdir dir="${test.classes}"/>
-    <!-- Compile -->
+    <!-- 编译 -->
     <javac srcdir="test" destdir="${test.classes}"
            debug="${compile.debug}"
            deprecation="${compile.deprecation}"
@@ -1344,7 +1340,7 @@
     </copy>
   </target>
 
-  <!-- Default JUnit log output formatter -->
+  <!-- 默认的JUnit日志输出格式化程序 -->
   <property name="junit.formatter.type" value="plain" />
   <property name="junit.formatter.usefile" value="true" />
   <property name="junit.formatter.extension" value=".txt" />
@@ -1458,14 +1454,14 @@
         <sysproperty key="tomcat.test.openssl.path" value="${test.openssl.path}" />
         <sysproperty key="tomcat.test.relaxTiming" value="${test.relaxTiming}" />
         <sysproperty key="tomcat.test.sslImplementation" value="${test.sslImplementation}" />
-        <!-- File for Cobertura to write coverage results to -->
+        <!-- 让Cobertura将覆盖率结果(coverage results)写入文件 -->
         <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.datafile}" />
 
         <formatter type="${junit.formatter.type}"
                    usefile="${junit.formatter.usefile}"
                    extension="@{extension}${junit.formatter.extension}" />
 
-        <!-- If test.entry is defined, run a single test, otherwise run all valid tests -->
+        <!-- 如果定义了test.entry，请运行单个测试，否则运行所有有效的测试 -->
         <test todir="${test.reports}" name="${test.entry}"
               if="test.entry" unless="test.entry.methods"
            />
@@ -1473,17 +1469,17 @@
               if="test.entry.methods"
            />
         <batchtest todir="${test.reports}" unless="test.entry">
-          <!-- Include all by default -->
+          <!-- 默认包含全部 -->
           <fileset dir="test" includes="${test.name}">
-            <!-- Exclude helper classes -->
+            <!-- 排除助手类 -->
             <exclude name="**/Tester*.java" />
-            <!-- Exclude the tests known to fail -->
+            <!-- 排除已知失败的测试 -->
             <exclude name="org/apache/catalina/tribes/test/**" />
-            <!-- Exclude the OpenSSL tests unless OpenSSL is available -->
+            <!-- 除非OpenSSL可用，否则排除OpenSSL测试 -->
             <exclude name="org/apache/tomcat/util/net/openssl/ciphers/**" unless="${test.openssl.exists}" />
-            <!-- Exclude performance tests. E.g. on systems with slow/inconsistent timing -->
+            <!-- 排除性能测试。 例如，在运行速度缓慢/不一致的系统上 -->
             <exclude name="**/*Performance.java" if="${test.excludePerformance}" />
-            <!-- Exclude a configurable list of tests -->
+            <!-- 排除可配置的测试列表(configurable list of tests) -->
             <exclude name="${test.exclude}" />
           </fileset>
         </batchtest>
@@ -1510,7 +1506,7 @@
 
   <target name="cobertura-disabled" unless="${cobertura.enabled}"
           depends="cobertura-init">
-    <!-- Define classpath used to run tests when Cobertura is turned off. -->
+    <!-- 定义用于在Cobertura关闭时运行测试的类路径。 -->
     <path id="tomcat.test.run.classpath">
       <path refid="tomcat.test.classpath" />
     </path>
@@ -1555,8 +1551,8 @@
       <auxClasspath path="${jdt.jar}" />
     </cobertura-instrument>
 
-    <!-- Define classpath used to run tests -->
-    <!-- The Cobertura instrumented classes must appear first on the classpath -->
+    <!-- 定义用于运行测试的类路径 -->
+    <!-- Cobertura插装类必须首先出现在类路径中 -->
     <path id="tomcat.test.run.classpath">
       <path location="${tomcat.classes.cobertura}" />
       <path refid="tomcat.test.classpath" />
@@ -1634,7 +1630,7 @@
           depends="extras-webservices-prepare,compile,build-manifests"
           description="Build web services extras package">
 
-    <!-- Compile web services classes components -->
+    <!-- 编译Web服务类组件 -->
     <javac srcdir="java" destdir="${tomcat.classes}"
            debug="${compile.debug}"
            deprecation="${compile.deprecation}"
@@ -1693,7 +1689,7 @@
 
   <target name="dist-static" depends="dist-prepare, deploy, extras, embed">
 
-    <!-- Copy the top-level documentation files -->
+    <!-- 复制顶级文档文件 -->
     <copy todir="${tomcat.dist}" encoding="ISO-8859-1">
       <filterset refid="version.filters"/>
       <fileset dir=".">
@@ -1705,7 +1701,7 @@
       </fileset>
     </copy>
 
-    <!-- Copy the contents of each "build" directory -->
+    <!-- 复制每个“build”目录的内容(contents) -->
     <copy todir="${tomcat.dist}/bin">
       <fileset dir="${tomcat.build}/bin">
       </fileset>
@@ -1727,18 +1723,18 @@
 
     <touch file="${tomcat.dist}/temp/safeToDelete.tmp" />
 
-    <!-- Correct permissions and line endings on "bin" scripts -->
+    <!-- 更正“bin”脚本的权限和行尾 -->
     <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   encoding="ISO-8859-1" fixlast="false" />
     <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
     <chmod      dir="${tomcat.dist}/bin" includes="*.sh"  perm="+x"/>
 
-    <!-- Windows binaries -->
-    <!-- 32 bit -->
+    <!-- Windows二进制文件 -->
+    <!-- 32位 -->
     <copy file="${commons-daemon.home}/windows/prunsrv.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}.exe" />
     <copy file="${commons-daemon.home}/windows/prunmgr.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}w.exe" />
-    <!-- 64 bit amd -->
+    <!-- 64位 X86_64 -->
     <copy file="${commons-daemon.home}/windows/amd64/prunsrv.exe"
         tofile="${tomcat.dist}/bin/x64/tomcat${version.major}.exe" />
     <!-- tc native -->
@@ -1749,13 +1745,13 @@
       </fileset>
     </copy>
 
-    <!-- Source bundles for native components -->
+    <!-- 本地组件的源代码包 -->
     <copy tofile="${tomcat.dist}/bin/tomcat-native.tar.gz"
             file="${tomcat-native.tar.gz}" />
     <copy tofile="${tomcat.dist}/bin/commons-daemon-native.tar.gz"
             file="${commons-daemon.native.src.tgz}" />
 
-    <!-- platform README files -->
+    <!-- 平台(platform)的README文件 -->
     <echo append="false" file="${tomcat.dist}/bin/x64/README">
 Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
     </echo>
@@ -1879,7 +1875,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
         <include name="org/**"/>
         <exclude name="org/apache/el/parser/**"/>
       </packageset>
-      <!--jdbc-pool src files for javadoc-->
+      <!--对于javadoc的jdbc-pool池的源代码文件夹-->
       <packageset dir="${tomcat.dist}/src/modules/jdbc-pool/src/main/java"/>
     </javadoc>
   </target>
@@ -1887,7 +1883,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
   <target name="dist-deployer" depends="dist-prepare,deploy"
     description="Create the Tomcat deployer binary">
 
-    <!-- Servlet and JSP -->
+    <!-- Servlet 和 JSP -->
     <copy todir="${tomcat.deployer}/lib">
       <fileset dir="${tomcat.build}/lib">
         <include name="catalina-ant.jar"/>
@@ -1908,7 +1904,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
       </fileset>
     </copy>
 
-    <!-- Digester and dependencies -->
+    <!-- 消化器(Digester) 和 依赖(dependencies) -->
     <jar jarfile="${tomcat.deployer}/lib/catalina-deployer.jar">
        <fileset dir="${tomcat.classes}">
           <include name="org/apache/catalina/startup/DigesterFactory.class" />
@@ -1936,12 +1932,12 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
        </fileset>
     </jar>
 
-    <!-- Main build script -->
+    <!-- 主编译脚本 -->
     <copy todir="${tomcat.deployer}">
       <fileset dir="${basedir}/res/deployer" />
     </copy>
 
-    <!-- Copy deployer documentation -->
+    <!-- 复制发布器文档(deployer document) -->
     <copy todir="${tomcat.deployer}">
       <fileset dir="${tomcat.build}/webapps/docs">
         <include name="images/asf-logo.svg" />
@@ -1958,7 +1954,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
 
     <mkdir dir="${tomcat.dist}/src"/>
 
-    <!-- Tomcat source -->
+    <!-- Tomcat 源码 -->
     <copy todir="${tomcat.dist}/src">
       <fileset dir="${basedir}" defaultexcludes="true">
         <not>
@@ -1969,9 +1965,8 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
             <filename name="**/.project"/>
             <filename name="**/nbproject/**"/>
             <filename name="**/output/**"/>
-            <!-- Commented out, because
-                 test/webapp-virtual-library and
-                 test/webapp-virtual-webapp use it:
+            <!-- 注释掉了，因为test/webapp-virtual-library和
+                 test/webapp-virtual-webapp使用它：
             <filename name="**/target/**"/>
             -->
             <filename name="**/build.properties"/>
@@ -1992,7 +1987,7 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
             <filename name="modules/jdbc-pool/bin/**" />
             <filename name="modules/jdbc-pool/includes/**" />
             <and>
-              <!-- exclude all modules except jdbc-pool -->
+              <!-- 排除除jdbc-pool之外的所有模块 -->
               <filename name="modules/**" />
               <not>
                 <filename name="modules/jdbc-pool/**" />
@@ -2065,7 +2060,7 @@ skip.installer property in build.properties" />
 
   <target name="-installer-create-uninstaller"
       unless="skip.installer" depends="-installer-create-tempinstaller">
-    <!-- Execute the temporary installer to create the uninstaller -->
+    <!-- 执行临时安装程序(temporary installer)以创建卸载程序 -->
     <exec dir="${tomcat.dist}" executable="${tomcat.dist}/tempinstaller.exe"
         osfamily="windows"  />
     <exec dir="${tomcat.dist}" executable="wine" osfamily="unix">
@@ -2127,7 +2122,7 @@ skip.installer property in build.properties" />
         <filename name="v${version}/bin/${final.name}.exe"/>
       </fileset>
     </signcode>
-    <!-- .exe has changed so need to redo checksums and OpenPGP signature -->
+    <!-- .exe文件已更改，因此需要重新校验和的OpenPGP签名 -->
     <delete file="${tomcat.release}/v${version}/bin/${final.name}.exe.asc" />
     <delete file="${tomcat.release}/v${version}/bin/${final.name}.exe.sha1" />
     <delete file="${tomcat.release}/v${version}/bin/${final.name}.exe.sha512" />
@@ -2176,7 +2171,7 @@ skip.installer property in build.properties" />
 
   </target>
 
-  <!-- Sets properties only required for releases -->
+  <!-- 设置仅用于发布(releases)的属性(properties)-->
   <target name="release-init" depends="gpg-init-1,gpg-init-2" />
 
   <target name="gpg-init-1">
@@ -2189,7 +2184,7 @@ skip.installer property in build.properties" />
     </input>
   </target>
 
-  <!-- Packages the core zip distro -->
+  <!-- 打包核心zip子项目(distro) -->
   <target name="package-zip" depends="dist-static">
     <fixcrlf srcdir="${tomcat.dist}" eol="crlf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2221,14 +2216,14 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}.zip" />
   </target>
 
-  <!-- Packages the core windows zip distros -->
+  <!-- 打包核心Windows zip 子项目 -->
   <target name="package-winzip" depends="dist-static">
     <fixcrlf srcdir="${tomcat.dist}" eol="crlf"
         encoding="ISO-8859-1" fixlast="false" >
       <patternset refid="text.files" />
     </fixcrlf>
 
-    <!-- Windows x86 package -->
+    <!-- 打包 Windows x86 -->
     <zip zipfile="${tomcat.release}/v${version}/bin/${final.name}-windows-x86.zip">
       <zipfileset dir="${tomcat.dist}" prefix="${final.name}">
         <include name="bin/**"/>
@@ -2250,7 +2245,7 @@ skip.installer property in build.properties" />
     </zip>
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}-windows-x86.zip" />
 
-    <!-- Windows x64 package -->
+    <!-- 打包 Windows x64 -->
     <zip zipfile="${tomcat.release}/v${version}/bin/${final.name}-windows-x64.zip">
       <zipfileset dir="${tomcat.dist}" prefix="${final.name}">
         <include name="bin/**"/>
@@ -2278,7 +2273,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}-windows-x64.zip" />
   </target>
 
-  <!-- Packages the deployer distribution in zip format -->
+  <!-- 以zip格式打包正式版(deployer distribution)用来分发 -->
   <target name="package-deployer-zip">
     <fixcrlf srcdir="${tomcat.dist}" eol="crlf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2300,7 +2295,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}-deployer.zip" />
   </target>
 
-  <!-- Packages the core tar.gz distro -->
+  <!-- 打包核心tar.gz 子项目 -->
   <target name="package-tgz" depends="dist-static">
     <fixcrlf srcdir="${tomcat.dist}" eol="lf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2346,8 +2341,8 @@ skip.installer property in build.properties" />
         <exclude name="bin/*.exe"/>
         <exclude name="bin/*.dll"/>
       </tarfileset>
-      <!-- These need to be added after the bin directory is added else the  -->
-      <!-- bin directory will pick up the wrong permissions.                 -->
+      <!-- 这些需要在bin目录添加之后添加，               -->
+      <!-- 否则bin目录将接受错误的权限。                 -->
       <tarfileset dir="${tomcat.dist}" dirmode="750" filemode="750" prefix="${final.name}">
         <include name="bin/catalina.sh" />
         <include name="bin/configtest.sh" />
@@ -2369,7 +2364,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}.tar.gz" />
   </target>
 
-  <!-- Packages the deployer Tomcat distro in tar.gz format -->
+  <!-- 以tar.gz格式打包 Tomcat发布器(deployer) 子项目 -->
   <target name="package-deployer-tgz">
     <fixcrlf srcdir="${tomcat.dist}" eol="lf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2396,7 +2391,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}-deployer.tar.gz" />
   </target>
 
-  <!-- Packages the documentation distro in tar.gz format -->
+  <!-- 以tar.gz格式打包文档子项目 -->
   <target name="package-docs-tgz" depends="dist-static">
     <fixcrlf srcdir="${tomcat.dist}" eol="lf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2418,7 +2413,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/bin/${final.name}-fulldocs.tar.gz" />
   </target>
 
-  <!-- Packages the source code distribution in zip format -->
+  <!-- 以zip格式打包源代码用于下载分发 -->
   <target name="package-src-zip" depends="dist-source">
     <fixcrlf srcdir="${tomcat.dist}/src" eol="crlf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2434,7 +2429,7 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/src/${final-src.name}.zip" />
   </target>
 
-  <!-- Packages the source code distribution in tar.gz format -->
+  <!-- 以tar.gz格式打包源代码用于下载分发 -->
   <target name="package-src-tgz" depends="dist-source">
     <fixcrlf srcdir="${tomcat.dist}/src" eol="lf"
         encoding="ISO-8859-1" fixlast="false" >
@@ -2450,19 +2445,19 @@ skip.installer property in build.properties" />
     <hashAndSign file="${tomcat.release}/v${version}/src/${final-src.name}.tar.gz" />
   </target>
 
-  <!-- Packages the source code in JARs to match the binary JARs -->
+  <!-- 将源代码打包到JAR中以匹配二进制JAR -->
   <target name="package-src-jar"
           depends="build-manifests,build-tomcat-jdbc-src">
 
     <mkdir dir="${tomcat.src.jars}" />
 
-    <!-- Common Annotations 1.0 JAR File -->
+    <!-- Common Annotations 1.0 JAR 文件 -->
     <jarIt jarfile="${annotations-api-src.jar}"
       filesDir="java"
       filesId="files.annotations-api"
       manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
 
-    <!-- Servlet 4.0 Implementation JAR File -->
+    <!-- Servlet 4.0 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${servlet-api-src.jar}"
       filesDir="java"
       filesId="files.servlet-api"
@@ -2470,7 +2465,7 @@ skip.installer property in build.properties" />
       notice="${tomcat.manifests}/servlet-api.jar.notice"
       license="${tomcat.manifests}/servlet-api.jar.license" />
 
-    <!-- JSP 2.3 Implementation JAR File -->
+    <!-- JSP 2.3 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jsp-api-src.jar}"
       filesDir="java"
       filesId="files.jsp-api"
@@ -2478,24 +2473,24 @@ skip.installer property in build.properties" />
       notice="${tomcat.manifests}/jsp-api.jar.notice"
       license="${tomcat.manifests}/jsp-api.jar.license" />
 
-    <!-- JSP EL 3.0 Implementation JAR File -->
+    <!-- JSP EL 3.0 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${el-api-src.jar}"
       filesDir="java"
       filesId="files.el-api"
       manifest="${tomcat.manifests}/el-api.jar.manifest" />
 
-    <!-- WebSocket 1.1 API JAR File -->
+    <!-- WebSocket 1.1 API JAR 文件 -->
     <jarIt jarfile="${websocket-api-src.jar}"
       filesDir="java"
       filesId="files.websocket-api"
       manifest="${tomcat.manifests}/websocket-api.jar.manifest" />
 
-    <!-- WebSocket 1.1 implementation JAR File -->
+    <!-- WebSocket 1.1 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${tomcat-websocket-src.jar}"
       filesDir="java"
       filesId="files.tomcat-websocket" />
 
-    <!-- JASPIC 1.1 API JAR File -->
+    <!-- JASPIC 1.1 API JAR 文件 -->
     <jarIt jarfile="${jaspic-api-src.jar}"
       filesDir="java"
       filesId="files.jaspic-api"
@@ -2503,58 +2498,58 @@ skip.installer property in build.properties" />
       notice="${tomcat.manifests}/jaspic-api.jar.notice"
       license="${tomcat.manifests}/jaspic-api.jar.license" />
 
-    <!-- Bootstrap JAR File -->
+    <!-- Bootstrap JAR 文件 -->
     <jarIt jarfile="${bootstrap-src.jar}"
       filesDir="java"
       filesId="files.bootstrap"
       manifest="${tomcat.manifests}/bootstrap.jar.manifest" />
 
-    <!-- Tomcat-juli JAR File -->
+    <!-- Tomcat-juli JAR 文件 -->
     <jarIt jarfile="${tomcat-juli-src.jar}"
       filesDir="java"
       filesId="files.tomcat-juli" />
 
-    <!-- Catalina Main JAR File -->
+    <!-- Catalina 主 JAR 文件 -->
     <jarIt jarfile="${catalina-src.jar}"
       filesDir="java"
       filesId="files.catalina" />
 
-    <!-- Catalina GroupCom/Tribes JAR File -->
+    <!-- Catalina GroupCom/Tribes JAR 文件 -->
     <jarIt jarfile="${catalina-tribes-src.jar}"
       filesDir="java"
       filesId="files.catalina-tribes" />
 
-    <!-- Catalina Cluster/HA JAR File -->
+    <!-- Catalina 集群(Cluster)/高可用(HA) JAR 文件 -->
     <jarIt jarfile="${catalina-ha-src.jar}"
       filesDir="java"
       filesId="files.catalina-ha" />
 
-    <!-- Catalina Ant Tasks JAR File -->
+    <!-- Catalina Ant 任务 JAR 文件 -->
     <jarIt jarfile="${catalina-ant-src.jar}"
       filesDir="java"
       filesId="files.catalina-ant" />
 
-    <!-- Catalina Storeconfig JAR File -->
+    <!-- Catalina 存储配置(Storeconfig) JAR 文件 -->
     <jarIt jarfile="${catalina-storeconfig-src.jar}"
       filesDir="java"
       filesId="files.catalina-storeconfig" />
 
-    <!-- Tomcat API JAR File -->
+    <!-- Tomcat API JAR 文件 -->
     <jarIt jarfile="${tomcat-api-src.jar}"
       filesDir="java"
       filesId="files.tomcat-api" />
 
-    <!-- Tomcat Util JAR File -->
+    <!-- Tomcat Util JAR 文件 -->
     <jarIt jarfile="${tomcat-util-src.jar}"
       filesDir="java"
       filesId="files.tomcat-util" />
 
-    <!-- Tomcat Util Scan JAR File -->
+    <!-- Tomcat Util 扫描(Scan) JAR 文件 -->
     <jarIt jarfile="${tomcat-util-scan-src.jar}"
       filesDir="java"
       filesId="files.tomcat-util-scan" />
 
-    <!-- Protocol handlers - Coyote -->
+    <!-- 协议处理程序(Protocol handlers) - Coyote -->
     <jarIt jarfile="${tomcat-coyote-src.jar}"
       filesDir="java"
       filesId="files.tomcat-coyote" />
@@ -2564,41 +2559,41 @@ skip.installer property in build.properties" />
       filesDir="java"
       filesId="files.tomcat-jni" />
 
-    <!-- Jasper Implementation JAR File -->
+    <!-- Jasper 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jasper-src.jar}"
       filesDir="java"
       filesId="files.jasper" />
 
-    <!-- Jasper EL Implementation JAR File -->
+    <!-- Jasper EL 实现(Implementation) JAR 文件 -->
     <jarIt jarfile="${jasper-el-src.jar}"
       filesDir="java"
       filesId="files.jasper-el" />
 
-    <!-- Repackaged DBCP -->
+    <!-- 重新打包 DBCP -->
     <jarIt jarfile="${tomcat-dbcp-src.jar}"
       filesDir="java"
       filesId="files.tomcat-dbcp" />
 
-    <!-- jdbc-pool JAR File -->
+    <!-- jdbc-pool JAR 文件 -->
     <copy file="${tomcat-jdbc-src.jar}" todir="${tomcat.src.jars}" />
   </target>
 
-  <!-- ========================= Cleaning Targets ========================== -->
+  <!-- ========================= 清理输出目录 ========================== -->
 
   <target name="clean"
           description="Delete the default output folders">
     <delete dir="${tomcat.output}" />
-    <!-- Remove the copied catalina.properties -->
+    <!-- 删除复制的catalina.properties文件 -->
     <delete file="java/org/apache/catalina/startup/catalina.properties" />
     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}" inheritAll="false" target="clean">
       <property name="tomcat.pool" value="${tomcat.pool}" />
     </ant>
-    <!-- remove jdbc-pool documentation -->
+    <!-- 删除jdbc-pool文档 -->
     <delete file="webapps/docs/jdbc-pool.xml"/>
   </target>
 
 
-  <!-- ================ Download and dependency building =================== -->
+  <!-- ================ 下载和依赖注入(dependency building) =================== -->
 
   <target name="download-validate"
           description="Download components necessary to validate source"
@@ -2615,14 +2610,14 @@ skip.installer property in build.properties" />
   <target name="download-compile"
           description="Download (and build) components necessary to compile" >
 
-    <!-- Download Commons Daemon -->
+    <!-- 下载 Commons Daemon -->
     <antcall target="downloadgz-2">
       <param name="sourcefile.1" value="${commons-daemon.bin.loc.1}"/>
       <param name="sourcefile.2" value="${commons-daemon.bin.loc.2}"/>
       <param name="destfile" value="${commons-daemon.jar}"/>
     </antcall>
 
-    <!-- Download JDT (Eclipse compiler) -->
+    <!-- 下载 JDT (Eclipse compiler) -->
     <antcall target="downloadfile-2">
       <param name="sourcefile.1" value="${jdt.loc.1}"/>
       <param name="sourcefile.2" value="${jdt.loc.2}"/>
@@ -2728,7 +2723,7 @@ skip.installer property in build.properties" />
 
   </target>
 
-  <!-- =============== Utility Targets to support downloads ================ -->
+  <!-- =============== 支持下载的实用目标 ================ -->
 
   <target name="setproxy" if="${proxy.use}">
     <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
@@ -2742,7 +2737,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadgz" unless="exist" depends="testexist,setproxy">
-    <!-- Download and extract the package -->
+    <!-- 下载并解压缩包 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-"/>
@@ -2754,7 +2749,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadgz-2" unless="exist" depends="testexist">
-    <!-- Download and extract the package from the two alternative locations -->
+    <!-- 从两个备选(alternative)位置下载并解压缩包 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-"/>
@@ -2773,7 +2768,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadzip" unless="exist" depends="testexist,setproxy">
-    <!-- Download and extract the package -->
+    <!-- 下载并解压(extract)缩包 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-" suffix=".zip"/>
@@ -2784,7 +2779,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadzip-2" unless="exist" depends="testexist">
-    <!-- Download and extract the package from the two alternative locations -->
+    <!-- 从两个备选位置下载并解压缩包 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-" suffix=".zip"/>
@@ -2802,7 +2797,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadfile" unless="exist" depends="testexist,setproxy">
-    <!-- Download the file -->
+    <!-- 下载以下文件 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-" suffix=".tmp"/>
@@ -2812,7 +2807,7 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="downloadfile-2" unless="exist" depends="testexist">
-    <!-- Download the file from the two alternative locations -->
+    <!-- 从两个备选位置下载文件 -->
     <local name="temp.file"/>
     <mkdir dir="${base.path}"/>
     <tempfile property="temp.file" destdir="${base.path}" prefix="download-" suffix=".tmp"/>
@@ -2846,11 +2841,11 @@ skip.installer property in build.properties" />
   </target>
 
   <target name="trydownload" if="trydownload.run" depends="trydownload.check">
-    <!-- Downloads a file if not yet downloaded and the source URL is available -->
+    <!-- 如果尚未下载并且源URL可用，将下载文件 -->
     <get src="${sourcefile}" httpusecaches="${trydownload.httpusecaches}" dest="${destfile}" />
   </target>
 
-  <!-- ============================ IDE Support ============================ -->
+  <!-- ============================ IDE 支持 ============================ -->
 
   <!-- ============================ Eclipse ================================ -->
 
@@ -2858,11 +2853,11 @@ skip.installer property in build.properties" />
           depends="download-compile, extras-webservices-prepare, download-test-compile"
           description="Prepares the source tree to be built in Eclipse">
 
-    <!-- Copy the sample project files into the root directory -->
+    <!-- 将示例项目文件(sample project files)复制到根目录中 -->
     <copy file="${tomcat.home}/res/ide-support/eclipse/eclipse.project" tofile="${tomcat.home}/.project"/>
     <copy file="${tomcat.home}/res/ide-support/eclipse/eclipse.classpath" tofile="${tomcat.home}/.classpath"/>
 
-    <!-- Copy compiler settings file -->
+    <!-- 复制编译器设置文件 -->
     <mkdir dir="${tomcat.home}/.settings" />
     <copy file="${tomcat.home}/res/ide-support/eclipse/org.eclipse.jdt.core.prefs.properties" tofile="${tomcat.home}/.settings/org.eclipse.jdt.core.prefs"/>
 
@@ -2880,25 +2875,25 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
   <target name="-ide-netbeans-protect"
           if="tomcat-nb.home.exists"
           depends="-ide-netbeans-check">
-    <!-- Protect existing NetBeans project files -->
+    <!-- 保护现有的 NetBeans 项目文件 -->
     <echo>NetBeans project files already exist and have been protected!
 Use the "ide-netbeans-replace" target if you wish to overwrite them.</echo>
   </target>
 
   <target name="-ide-netbeans-check">
-    <!-- protect existing files if the NetBeans project directory exists  -->
+    <!-- 如果NetBeans项目目录存在，则保护现有文件  -->
     <condition property="tomcat-nb.home.exists">
         <available file="${tomcat-nb.home}" type="dir"/>
     </condition>
   </target>
 
   <target name="ide-netbeans-replace" depends="-ide-netbeans-create">
-    <!-- Bypass protection of any existing NetBeans project files -->
+    <!-- 绕过任何现有NetBeans项目文件的保护 -->
   </target>
 
   <target name="-ide-netbeans-create"
           unless="tomcat-nb.home.exists">
-    <!-- Unconditionally create or overwrite default NetBeans project files -->
+    <!-- 无条件(Unconditionally)地创建或覆盖默认的NetBeans项目文件  -->
     <property name="tomcat-nb.dist" value="${tomcat.home}/res/ide-support/netbeans" />
     <mkdir dir="${tomcat-nb.home}/"/>
     <copy todir="${tomcat-nb.home}" overwrite="true">
@@ -2909,7 +2904,7 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
   </target>
 
 
-  <!-- ======================= Macros, Taskdefs etc ======================== -->
+  <!-- ======================= Macros, Taskdefs 或其他 ======================== -->
 
   <macrodef name="jarIt" description="utility macro for standard JAR packaging">
     <attribute name="jarfile"
@@ -2930,7 +2925,7 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
       <jar jarfile="@{jarfile}" manifest="@{manifest}">
         <fileset dir="@{filesDir}">
           <patternset refid="@{filesId}"/>
-          <!-- Javadoc and i18n exclusions -->
+          <!-- Javadoc 和 i18n 排除 -->
           <exclude name="**/package.html" />
           <exclude name="**/LocalStrings_*" />
         </fileset>
@@ -2942,8 +2937,8 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
     </sequential>
   </macrodef>
 
-  <!-- Macro, used to create checksum and signature files  -->
-  <!-- Requires 'file' as a parameter. -->
+  <!-- 宏(macro)，用于创建校验(create checksum)和和签名文件(signature files) -->
+  <!-- 需要'file'作为参数(parameter)。 -->
   <macrodef name="hashAndSign">
     <attribute name="file" />
     <sequential>
@@ -2964,10 +2959,9 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
     </sequential>
   </macrodef>
 
-  <!-- Helper target, used to create a detached ascii OpenPGP signature.     -->
-  <!-- Uses GPG with default key. Requires 'file' as a parameter. Only       -->
-  <!-- executes if gpg passphrase is set which is only set when using the    -->
-  <!-- release target.                                                       -->
+  <!-- 辅助指标，用来创建一个脱离的ASCII的OpenPGP签名。     -->
+  <!-- 使用默认值的GPG。 需要'file'作为参数。              -->
+  <!-- 仅在使用释放目标时设置的gpg密码才会执行。             -->
   <target name="sign" if="gpg.passphrase">
     <fail unless="file" />
     <exec executable="${gpg.exec}" failonerror="true"

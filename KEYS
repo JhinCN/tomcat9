@@ -1,6 +1,5 @@
-This file contains the PGP&GPG keys of various Apache developers.
-Please don't use them for email unless you have to. Their main
-purpose is code signing.
+此文件包含各种Apache开发人员的PGP和GPG密钥。
+除非必须，否则请不要将它们用于电子邮件。 他们的主要目的是代码签名。
 
 Apache users: pgp < KEYS
 Apache developers:
@@ -9,8 +8,7 @@ Apache developers:
         (gpg --fingerprint --list-sigs <your name>
              && gpg --armor --export <your name>) >> this file.
 
-Apache developers: please ensure that your key is also available via the
-PGP keyservers (such as pgpkeys.mit.edu).
+Apache开发人员：请确保您的密钥也可以通过PGP密钥服务器（例如pgpkeys.mit.edu）获得。
 
 
 Type Bits/KeyID    Date       User ID

@@ -29,7 +29,8 @@ import java.lang.annotation.Target;
 public @interface EJB {
    String name() default "";
    String description() default "";
-   @SuppressWarnings("rawtypes") // Can't use Class<?> because API needs to match specification
+   // 不能使用 Class<?> ，因为API需要匹配规范
+   @SuppressWarnings("rawtypes") 
    Class beanInterface() default java.lang.Object.class;
    String beanName() default "";
    String mappedName() default "";

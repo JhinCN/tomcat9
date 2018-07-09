@@ -15,11 +15,10 @@
   limitations under the License.
 ================================================================================
 
-Apache Tomcat re-uses code from a number of other Apache projects. There are
-several reasons why depending on the binary releases of those projects is not
-ideal. These include:
-- potential conflicts if a web application ships with the same JAR
-- a large JAR where Tomcat only depends on a small fraction
+Apache Tomcat重用了许多其他Apache项目的代码。
+有几个原因可以解释为什么依赖于这些项目的二进制版本并不理想。 这些包括：
+- 如果Web应用程序附带相同的JAR，则可能发生冲突
+- Tomcat只依赖于一小部分的大型JAR
 
 
 SVN

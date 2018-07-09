@@ -18,8 +18,7 @@
 package javax.el;
 
 /**
- * Represents any of the exception conditions that can arise during expression
- * evaluation.
+ * 表示在表达式求值期间可能出现的任何异常条件。
  *
  * @since 2.1
  */
@@ -28,39 +27,39 @@ public class ELException extends RuntimeException {
     private static final long serialVersionUID = -6228042809457459161L;
 
     /**
-     * Creates an ELException with no detail message
+     * 创建一个没有详细消息的ELException
      */
     public ELException() {
         super();
     }
 
     /**
-     * Creates an ELException with the provided detail message.
+     * 创建一个提供详细消息的ELException。
      *
      * @param message
-     *            the detail message
+     *            详细信息
      */
     public ELException(String message) {
         super(message);
     }
 
     /**
-     * Creates an ELException with the given cause
+     * 创建一个给定原因的ELException
      *
      * @param cause
-     *            the originating cause of this exception
+     *            此异常(Exception)的起因
      */
     public ELException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * Creates an ELException with the given detail message and root cause.
+     * 创建一个带有给定的详细消息和根本原因的ELException
      *
      * @param message
-     *            the detail message
+     *            详细信息
      * @param cause
-     *            the originating cause of this exception
+     *            此异常(Exception)的起因
      */
     public ELException(String message, Throwable cause) {
         super(message, cause);

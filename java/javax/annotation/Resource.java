@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @since Common Annotations 1.0
+ * @since 共用（常用） 注释 1.0
  */
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
@@ -33,7 +33,7 @@ public @interface Resource {
     }
     public String name() default "";
     /**
-     * Uses generics since Common Annotations 1.2.
+     * 从共用（常用）注释 1.2开始使用泛型
      */
     public Class<?> type() default Object.class;
     public AuthenticationType authenticationType() default AuthenticationType.CONTAINER;
@@ -41,7 +41,7 @@ public @interface Resource {
     public String description() default "";
     public String mappedName() default "";
     /**
-     * @since Common Annotations 1.1
+     * @since 共用（常用） 注释 1.1
      */
     public String lookup() default "";
 }

@@ -120,7 +120,7 @@ public class BeanNameELResolver extends ELResolver {
     public boolean isReadOnly(ELContext context, Object base, Object property) {
         Objects.requireNonNull(context);
         if (base != null || !(property instanceof String)) {
-            // Return value undefined
+            // 返回值未定义
             return false;
         }
 
@@ -138,7 +138,7 @@ public class BeanNameELResolver extends ELResolver {
             return result;
         }
 
-        // Return value undefined
+        // 返回值未定义
         return false;
     }
 
