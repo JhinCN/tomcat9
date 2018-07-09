@@ -49,9 +49,10 @@ public abstract class ELContext {
 
     /**
      * Mark the given property as resolved and notfy any interested listeners.
+     * 将给定属性标记为已解析并且不对任何感兴趣的侦听器进行标记。
      *
-     * @param base     The base object on which the property was found
-     * @param property The property that was resolved
+     * @param base     找到该属性的基础对象
+     * @param property 已解析(resolved)的属性
      *
      * @since EL 3.0
      */
@@ -64,15 +65,15 @@ public abstract class ELContext {
         return this.resolved;
     }
 
-    // Can't use Class<?> because API needs to match specification
+    // 不能使用Class<?>，因为API需要匹配规范
     /**
-     * Add an object to this EL context under the given key.
+     * 在给定key的情况下将对象添加到此EL表达式上下文。
      *
-     * @param key           The key under which to store the object
-     * @param contextObject The object to add
+     * @param key           存储对象的key
+     * @param contextObject 要添加的对象
      *
      * @throws NullPointerException
-     *              If the supplied key or context is <code>null</code>
+     *              如果提供的key或上下文(context)是<code> null </code>
      */
     public void putContext(@SuppressWarnings("rawtypes") Class key,
             Object contextObject) {
@@ -86,16 +87,16 @@ public abstract class ELContext {
         this.map.put(key, contextObject);
     }
 
-    // Can't use Class<?> because API needs to match specification
+    // 不能使用Class<?>，因为API需要匹配规范
     /**
-     * Obtain the context object for the given key.
+     * 获取给定key的上下文对象。
      *
-     * @param key The key of the required context object
+     * @param key 所需上下文对象的key
      *
-     * @return The value of the context object associated with the given key
-     *
+     * @return 关联了给定key的上下文对象的值
+     *         
      * @throws NullPointerException
-     *              If the supplied key is <code>null</code>
+     *              如果提供的key是 <code>null</code>
      */
     public Object getContext(@SuppressWarnings("rawtypes") Class key) {
         Objects.requireNonNull(key);
@@ -108,10 +109,9 @@ public abstract class ELContext {
     public abstract ELResolver getELResolver();
 
     /**
-     * Obtain the ImportHandler for this ELContext, creating one if necessary.
-     * This method is not thread-safe.
+     * 获取此ELContext的ImportHandler，必要时创建一个。 此方法是线程不安全的。
      *
-     * @return the ImportHandler for this ELContext.
+     * @return 此ELContext的ImportHandler
      *
      * @since EL 3.0
      */
@@ -135,9 +135,9 @@ public abstract class ELContext {
     public abstract VariableMapper getVariableMapper();
 
     /**
-     * Register an EvaluationListener with this ELContext.
+     * 注册一个带有ELContext的EvaluationListener 
      *
-     * @param listener The EvaluationListener to register
+     * @param listener 要注册的EvaluationListener
      *
      * @since EL 3.0
      */
@@ -146,9 +146,9 @@ public abstract class ELContext {
     }
 
     /**
-     * Obtain the list of registered EvaluationListeners.
+     * 获取已注册的EvaluationListener列表。
      *
-     * @return A list of the EvaluationListener registered with this ELContext
+     * @return 一个已经注册的带有ELContext的EvaluationListener的列表
      *
      * @since EL 3.0
      */
@@ -158,8 +158,9 @@ public abstract class ELContext {
 
     /**
      * Notify interested listeners that an expression will be evaluated.
+     * 通知感兴趣的listenter对表达式进行评估。
      *
-     * @param expression The expression that will be evaluated
+     * @param expression 将被评估的表达式(expression)
      *
      * @since EL 3.0
      */
@@ -169,15 +170,16 @@ public abstract class ELContext {
                 listener.beforeEvaluation(this, expression);
             } catch (Throwable t) {
                 Util.handleThrowable(t);
-                // Ignore - no option to log
+                // 忽略 - 没有记录选项
             }
         }
     }
 
     /**
      * Notify interested listeners that an expression has been evaluated.
+     * 通知感兴趣的listener,这是已经评估完成的表达式。
      *
-     * @param expression The expression that was evaluated
+     * @param expression 被评估的表达式
      *
      * @since EL 3.0
      */
@@ -187,16 +189,17 @@ public abstract class ELContext {
                 listener.afterEvaluation(this, expression);
             } catch (Throwable t) {
                 Util.handleThrowable(t);
-                // Ignore - no option to log
+                // 忽略 - 没有记录选项
             }
         }
     }
 
     /**
      * Notify interested listeners that a property has been resolved.
+     * 通知相关的listener已解析属性。
      *
-     * @param base     The object on which the property was resolved
-     * @param property The property that was resolved
+     * @param base     解析属性的对象
+     * @param property 需要解析的属性
      *
      * @since EL 3.0
      */
@@ -206,19 +209,17 @@ public abstract class ELContext {
                 listener.propertyResolved(this, base, property);
             } catch (Throwable t) {
                 Util.handleThrowable(t);
-                // Ignore - no option to log
+                // 忽略 - 没有记录选项
             }
         }
     }
 
     /**
-     * Determine if the specified name is recognised as the name of a lambda
-     * argument.
+     * 确定指定的名称是否被识别为lambda参数的名称。
      *
-     * @param name The name of the lambda argument
+     * @param name lambda参数的名称
      *
-     * @return <code>true</code> if the name is recognised as the name of a
-     *         lambda argument, otherwise <code>false</code>
+     * @return 名称被识别为lambda参数的名称就为<code>true</code>，否则 <code>false</code>
      *
      * @since EL 3.0
      */
@@ -232,11 +233,11 @@ public abstract class ELContext {
     }
 
     /**
-     * Obtain the value of the lambda argument with the given name.
+     * 获取具有给定名称的lambda参数的值。
      *
-     * @param name The name of the lambda argument
+     * @param name lambda参数的名称
      *
-     * @return The value of the specified argument
+     * @return 指定参数的值
      *
      * @since EL 3.0
      */
@@ -251,11 +252,9 @@ public abstract class ELContext {
     }
 
     /**
-     * Called when starting to evaluate a lambda expression so that the
-     * arguments are available to the EL context during evaluation.
+     * 开始评估lambda表达式时调用，使得参数可用于EL表达式上下文。
      *
-     * @param arguments The arguments in scope for the current lambda
-     *                  expression.
+     * @param arguments 当前lambda表达式的范围中的参数。
      * @since EL 3.0
      */
     public void enterLambdaScope(Map<String,Object> arguments) {
@@ -263,8 +262,7 @@ public abstract class ELContext {
     }
 
     /**
-     * Called after evaluating a lambda expression to signal that the arguments
-     * are no longer required.
+     * 在评估lambda表达式后调用，以表示不再需要参数。
      *
      * @since EL 3.0
      */
@@ -273,15 +271,15 @@ public abstract class ELContext {
     }
 
     /**
-     * Coerce the supplied object to the requested type.
+     * 将提供的对象强制转换为请求的类型。
      *
-     * @param obj  The object to be coerced
-     * @param type The type to which the object should be coerced
+     * @param obj  需要强制的对象
+     * @param type 需要强制对象的类型
      *
-     * @return An instance of the requested type.
+     * @return 请求类型的实例
      *
      * @throws ELException
-     *              If the conversion fails
+     *              如果转换失败
      *
      * @since EL 3.0
      */

@@ -44,7 +44,7 @@ public class ArrayELResolver extends ELResolver {
                 int idx = coerce(property);
                 checkBounds(base, idx);
             } catch (IllegalArgumentException e) {
-                // ignore
+                // 忽略
             }
             return base.getClass().getComponentType();
         }
@@ -103,7 +103,7 @@ public class ArrayELResolver extends ELResolver {
                 int idx = coerce(property);
                 checkBounds(base, idx);
             } catch (IllegalArgumentException e) {
-                // ignore
+                // 忽略
             }
         }
 

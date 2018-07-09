@@ -29,7 +29,7 @@ public class CompositeELResolver extends ELResolver {
         try {
             clazz = Class.forName("javax.servlet.jsp.el.ScopedAttributeELResolver");
         } catch (ClassNotFoundException e) {
-            // Ignore. This is expected if using the EL stand-alone
+            // 忽视. 这是单独使用EL表达式造成的可预料的后果
         }
         SCOPED_ATTRIBUTE_EL_RESOLVER = clazz;
     }
@@ -93,9 +93,8 @@ public class CompositeELResolver extends ELResolver {
             if (context.isPropertyResolved()) {
                 if (SCOPED_ATTRIBUTE_EL_RESOLVER != null &&
                         SCOPED_ATTRIBUTE_EL_RESOLVER.isAssignableFrom(resolvers[i].getClass())) {
-                    // Special case since
-                    // javax.servlet.jsp.el.ScopedAttributeELResolver will
-                    // always return Object.class for type
+                    // 特殊情况，因为 javax.servlet.jsp.el.ScopedAttributeELResolver 
+                    // 将始终返回Object.class类型
                     Object value = resolvers[i].getValue(context, base, property);
                     if (value != null) {
                         return value.getClass();

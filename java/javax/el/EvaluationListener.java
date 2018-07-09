@@ -22,34 +22,33 @@ package javax.el;
 public abstract class EvaluationListener {
 
     /**
-     * Fired before the evaluation of the expression.
+     * 在表达式评估前触发。
      *
-     * @param context    The EL context in which the expression will be
-     *                   evaluated
-     * @param expression The expression that will be evaluated
+     * @param context    将评估表达式的EL上下文
+     * @param expression 将要评估的表达式
      */
     public void beforeEvaluation(ELContext context, String expression) {
-        // NO-OP
+        // 空指令
     }
 
     /**
-     * Fired after the evaluation of the expression.
+     * 在表达式评估后触发
      *
-     * @param context    The EL context in which the expression was evaluated
-     * @param expression The expression that was evaluated
+     * @param context    将评估表达式的EL上下文
+     * @param expression 将要评估的表达式
      */
     public void afterEvaluation(ELContext context, String expression) {
-        // NO-OP
+        // 空指令
     }
 
     /**
-     * Fired after a property has been resolved.
+     * 属性解析后触发
      *
-     * @param context  The EL context in which the property was resolved
-     * @param base     The base object on which the property was resolved
-     * @param property The property that was resolved
+     * @param context  解析该属性的EL上下文
+     * @param base     解析属性的基础对象
+     * @param property 已经解析的属性
      */
     public void propertyResolved(ELContext context, Object base, Object property) {
-        // NO-OP
+        // 空指令
     }
 }

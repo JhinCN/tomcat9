@@ -76,27 +76,26 @@ public abstract class ExpressionFactory {
     }
 
     /**
-     * Create a new {@link ExpressionFactory}. The class to use is determined by
-     * the following search order:
+     * 创建一个新的{@link ExpressionFactory}。 要使用的类由以下搜索顺序确定：
      * <ol>
      * <li>services API (META-INF/services/javax.el.ExpressionFactory)</li>
      * <li>$JRE_HOME/lib/el.properties - key javax.el.ExpressionFactory</li>
      * <li>javax.el.ExpressionFactory</li>
-     * <li>Platform default implementation -
+     * <li>平台默认的实现 -
      *     org.apache.el.ExpressionFactoryImpl</li>
      * </ol>
-     * @return the new ExpressionFactory
+     * @return 新的ExpressionFactory
      */
     public static ExpressionFactory newInstance() {
         return newInstance(null);
     }
 
     /**
-     * Create a new {@link ExpressionFactory} passing in the provided
-     * {@link Properties}. Search order is the same as {@link #newInstance()}.
+     * 通过提供的{@link Properties}创建一个新的{@link ExpressionFactory}。 
+     * 搜索顺序与{@link #newInstance()}相同。
      *
-     * @param properties the properties to be passed to the new instance (may be null)
-     * @return the new ExpressionFactory
+     * @param properties 要传递给新实例的属性（可能为null）
+     * @return 新的 ExpressionFactory
      */
     public static ExpressionFactory newInstance(Properties properties) {
         ExpressionFactory result = null;
@@ -157,15 +156,15 @@ public abstract class ExpressionFactory {
 
         try {
             Constructor<?> constructor = null;
-            // Do we need to look for a constructor that will take properties?
+            // 我们需要寻找一个可以获取属性的构造函数吗？
             if (properties != null) {
                 try {
                     constructor = clazz.getConstructor(Properties.class);
                 } catch (SecurityException se) {
                     throw new ELException(se);
                 } catch (NoSuchMethodException nsme) {
-                    // This can be ignored
-                    // This is OK for this constructor not to exist
+                    // 这可以忽略
+                    // 这个构造函数不存在就可以了
                 }
             }
             if (constructor == null) {
@@ -191,19 +190,18 @@ public abstract class ExpressionFactory {
     }
 
     /**
-     * Create a new value expression.
+     * 创建一个新的值表达式。
      *
-     * @param context      The EL context for this evaluation
-     * @param expression   The String representation of the value expression
-     * @param expectedType The expected type of the result of evaluating the
-     *                     expression
+     * @param context      此评估的EL上下文
+     * @param expression   值表达式的String表示形式
+     * @param expectedType 评估表达式的结果的预期类型
      *
-     * @return A new value expression formed from the input parameters
+     * @return 由输入参数组成的新值表达式
      *
      * @throws NullPointerException
-     *              If the expected type is <code>null</code>
+     *              如果期望的类型是<code> null </code>
      * @throws ELException
-     *              If there are syntax errors in the provided expression
+     *             如果提供的表达式中存在语法错误
      */
     public abstract ValueExpression createValueExpression(ELContext context,
             String expression, Class<?> expectedType);
@@ -212,28 +210,26 @@ public abstract class ExpressionFactory {
             Class<?> expectedType);
 
     /**
-     * Create a new method expression instance.
+     * 创建一个新的方法表达式实例。
      *
-     * @param context            The EL context for this evaluation
-     * @param expression         The String representation of the method
-     *                           expression
-     * @param expectedReturnType The expected type of the result of invoking the
-     *                           method
-     * @param expectedParamTypes The expected types of the input parameters
+     * @param context            此评估的EL上下文
+     * @param expression         方法表达式的String表示形式
+     * @param expectedReturnType 调用方法的结果的预期类型
+     * @param expectedParamTypes 输入参数的预期类型
      *
-     * @return A new method expression formed from the input parameters.
+     * @return 由输入参数形成的新方法表达式。
      *
      * @throws NullPointerException
-     *              If the expected parameters types are <code>null</code>
+     *              如果预期的参数类型是<code> null </code>
      * @throws ELException
-     *              If there are syntax errors in the provided expression
+     *              如果提供的表达式中存在语法错误
      */
     public abstract MethodExpression createMethodExpression(ELContext context,
             String expression, Class<?> expectedReturnType,
             Class<?>[] expectedParamTypes);
 
     /**
-     * Coerce the supplied object to the requested type.
+     * 将提供的对象强制转换为请求的类型。
      *
      * @param obj          The object to be coerced
      * @param expectedType The type to which the object should be coerced

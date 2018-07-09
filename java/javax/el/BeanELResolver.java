@@ -145,7 +145,7 @@ public class BeanELResolver extends ELResolver {
 
         String methodName = (String) factory.coerceToType(method, String.class);
 
-        // Find the matching method
+        // 找到匹配方法
         Method matchingMethod =
                 Util.findMethod(base.getClass(), methodName, paramTypes, params);
 
@@ -224,8 +224,7 @@ public class BeanELResolver extends ELResolver {
                     this.properties.put(pd.getName(), new BeanProperty(type, pd));
                 }
                 if (System.getSecurityManager() != null) {
-                    // When running with SecurityManager, some classes may be
-                    // not accessible, but have accessible interfaces.
+                    // 使用SecurityManager运行时，某些类可能无法访问，但具有可访问的接口。
                     populateFromInterfaces(type);
                 }
             } catch (IntrospectionException ie) {
@@ -289,7 +288,7 @@ public class BeanELResolver extends ELResolver {
             this.type = descriptor.getPropertyType();
         }
 
-        // Can't use Class<?> because API needs to match specification
+        // 无法使用 Class<?>，因为API需要匹配规范
         @SuppressWarnings("rawtypes")
         public Class getPropertyType() {
             return this.type;

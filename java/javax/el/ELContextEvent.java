@@ -24,7 +24,7 @@ public class ELContextEvent extends EventObject {
     private static final long serialVersionUID = 1255131906285426769L;
 
     /**
-     * @param source The EL context that was the source of this event
+     * @param source 作为此事件(event)源的EL上下文
      */
     public ELContextEvent(ELContext source) {
         super(source);

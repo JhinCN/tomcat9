@@ -29,33 +29,31 @@ public abstract class ELResolver {
     public static final String RESOLVABLE_AT_DESIGN_TIME = "resolvableAtDesignTime";
 
     /**
-     * @param context The EL context for this evaluation
-     * @param base The base object on which the property is to be found
-     * @param property The property whose value is to be returned
-     * @return the value of the provided property
+     * @param context 需要评估的EL上下文 
+     * @param base 需要找到属性的基础对象
+     * @param property 返回值的属性
+     * @return 提供属性的值
      * @throws NullPointerException
-     *              If the supplied context is <code>null</code>
+     *             如果提供的上下文是 <code>null</code>
      * @throws PropertyNotFoundException
-     *              If the base/property combination provided to the resolver is
-     *              one that the resolver can handle but no match was found or a
-     *              match was found but was not readable
+     *              如果提供给解析程序的基本/属性组合是解析程序可以处理但未找到匹配项或
+     *              找到匹配但基本/属性组合不可读
      * @throws ELException
-     *              Wraps any exception throw whilst resolving the property
+     *              在解析属性时包装任何异常抛出
      */
     public abstract Object getValue(ELContext context, Object base,
             Object property);
 
     /**
-     * Invokes a method on the the given object. This default implementation
-     * always returns <code>null</code>.
+     * 在给定对象上调用方法。 此默认实现始终返回<code> null </code>。
      *
-     * @param context    The EL context for this evaluation
-     * @param base       The base object on which the method is to be found
-     * @param method     The method to invoke
-     * @param paramTypes The types of the parameters of the method to invoke
-     * @param params     The parameters with which to invoke the method
+     * @param context    需要评估的EL上下文
+     * @param base       要查找方法的基本对象
+     * @param method     要调用的方法
+     * @param paramTypes 要调用的方法的参数类型
+     * @param params     用于调用方法的参数
      *
-     * @return Always <code>null</code>
+     * @return 永远是 <code>null</code>
      *
      * @since EL 2.2
      */
@@ -65,55 +63,51 @@ public abstract class ELResolver {
     }
 
     /**
-     * @param context The EL context for this evaluation
-     * @param base The base object on which the property is to be found
-     * @param property The property whose type is to be returned
-     * @return the type of the provided property
+     * @param context 需要评估的EL上下文
+     * @param base 要查找属性的基本对象
+     * @param property 要返回其类型的属性
+     * @return 提供的属性的类型
      * @throws NullPointerException
-     *              If the supplied context is <code>null</code>
+     *             如果提供的上下文是<code> null </code>
      * @throws PropertyNotFoundException
-     *              If the base/property combination provided to the resolver is
-     *              one that the resolver can handle but no match was found or a
-     *              match was found but was not readable
+     *             如果提供给解析程序的基本/属性组合是解析程序可以处理
+     *             但未找到匹配项或找到匹配项但是不可读的基本/属性组合
      * @throws ELException
-     *              Wraps any exception throw whilst resolving the property
+     *             在解析属性时包装任何异常抛出
      */
     public abstract Class<?> getType(ELContext context, Object base,
             Object property);
 
     /**
-     * @param context  The EL context for this evaluation
-     * @param base     The base object on which the property is to be found
-     * @param property The property whose value is to be set
-     * @param value    The value to set the property to
+     * @param context  需要评估的EL上下文
+     * @param base     要查找属性的基本对象
+     * @param property 要设置其值的属性
+     * @param value    设置属性的值
      * @throws NullPointerException
-     *              If the supplied context is <code>null</code>
+     *             如果提供的上下文是<code> null </code>
      * @throws PropertyNotFoundException
-     *              If the base/property combination provided to the resolver is
-     *              one that the resolver can handle but no match was found
+     *              如果提供给解析程序的基本/属性组合是解析程序可以处理
+     *              但未找到匹配项或找到匹配项但是不可读的基本/属性组合
      * @throws PropertyNotWritableException
-     *              If the base/property combination provided to the resolver is
-     *              one that the resolver can handle but the property was not
-     *              writable
+     *              如果提供给解析程序的基本/属性组合是解析程序可以处理的属性，但该属性不可写
      * @throws ELException
-     *              Wraps any exception throw whilst resolving the property
+     *              在解析属性时包装任何异常抛出
      */
     public abstract void setValue(ELContext context, Object base,
             Object property, Object value);
 
     /**
-     * @param context The EL context for this evaluation
-     * @param base The base object on which the property is to be found
-     * @param property The property to be checked for read only status
-     * @return <code>true</code> if the identified property is read only,
-     *         otherwise <code>false</code>
+     * @param context 需要评估的EL上下文
+     * @param base 要查找属性的基础对象
+     * @param property 需要检查的属性是否为只读状态
+     * @return 如果标识的属性是只读的就为<code>true</code> ，否则<code> false </ code>
      * @throws NullPointerException
-     *              If the supplied context is <code>null</code>
+     *              如果提供的上下文是<code> null </code>
      * @throws PropertyNotFoundException
-     *              If the base/property combination provided to the resolver is
-     *              one that the resolver can handle but no match was found
+     *              如果提供给解析程序的基本/属性组合是解析程序可以处理
+     *              但未找到匹配项或找到匹配项但是不可读的基本/属性组合
      * @throws ELException
-     *              Wraps any exception throw whilst resolving the property
+     *             在解析属性时包装任何异常抛出
      */
     public abstract boolean isReadOnly(ELContext context, Object base,
             Object property);
@@ -124,14 +118,13 @@ public abstract class ELResolver {
             Object base);
 
     /**
-     * Converts the given object to the given type. This default implementation
-     * always returns <code>null</code>.
+     * 将给定对象转换为给定类型。 此默认实现始终返回<code> null </code>。
      *
-     * @param context The EL context for this evaluation
-     * @param obj     The object to convert
-     * @param type    The type to which the object should be converted
+     * @param context 此评估的EL上下文
+     * @param obj     要转换的对象
+     * @param type    对象应转换为的类型
      *
-     * @return Always <code>null</code>
+     * @return 永远是 <code>null</code>
      *
      * @since EL 3.0
      */

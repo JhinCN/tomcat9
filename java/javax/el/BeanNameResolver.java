@@ -17,19 +17,18 @@
 package javax.el;
 
 /**
- * Base implementation that provides a minimal default implementation that is
- * intended to be extended by application developers.
+ * 提供应用程序开发人员扩展的最小默认实现的基本实现。
  *
  * @since EL 3.0
  */
 public abstract class BeanNameResolver {
 
     /**
-     * Can this resolver resolve the given bean name?
+     * 这个解析器可以解析给定的bean名称吗？
      *
-     * @param beanName The bean name to resolve
+     * @param beanName 要解析的bean的名字
      *
-     * @return This default implementation always returns <code>false</code>
+     * @return 此默认实现始终返回<code>false</code>
      */
     public boolean isNameResolved(String beanName) {
         return false;
@@ -37,11 +36,11 @@ public abstract class BeanNameResolver {
 
 
     /**
-     * Returns the named bean.
+     * 返回指定的bean。
      *
-     * @param beanName The bean name to return
+     * @param beanName 要返回的bean的名字
      *
-     * @return This default implementation always returns <code>null</code>
+     * @return 此默认实现始终返回<code>false</code>
      */
     public Object getBean(String beanName) {
         return null;
@@ -49,14 +48,14 @@ public abstract class BeanNameResolver {
 
 
     /**
-     * Sets a value of a bean of the given name. If the named bean does not
-     * exist and {@link #canCreateBean} returns <code>true</code> then a bean
-     * is created with the given value.
+     * 设置给定名称的bean的值。 如果命名bean不存在且
+     * {@link #canCreateBean}返回<code> true </code>，则使用给定值创建bean。
      *
-     * @param beanName The name of the bean to be set/create
-     * @param value    The value of the bean to set/create
+     * @param beanName 要设置/创建的bean的名称
+     * 
+     * @param value 要设置/创建的bean的值
      *
-     * @throws PropertyNotWritableException if the bean is read only
+     * @throws PropertyNotWritableException 如果bean是只读的
      */
     public void setBeanValue(String beanName, Object value)
             throws PropertyNotWritableException {
@@ -65,12 +64,11 @@ public abstract class BeanNameResolver {
 
 
     /**
-     * Is the named bean read-only?
+     * 命名的bean是只读的吗？
      *
-     * @param beanName The name of the bean of interest
+     * @param beanName 感兴趣的bean()的名字
      *
-     * @return <code>true</code> if the bean is read only, otherwise
-     *         <code>false</code>
+     * @return 如果bean是只读的为<code>true</code>，否则<code>false</code>
      */
     public boolean isReadOnly(String beanName) {
         return true;
@@ -78,12 +76,11 @@ public abstract class BeanNameResolver {
 
 
     /**
-     * Is it permitted to create a bean of the given name?
+     * 是否允许创建给定名称的bean？
      *
-     * @param beanName The name of the bean of interest
+     * @param beanName 感兴趣的bean(bean of interest)的名字
      *
-     * @return <code>true</code> if the bean may be created, otherwise
-     *         <code>false</code>
+     * @return 如果可以创建bean 就是<code>true</code> ，否则<code>false</code>
      */
     public boolean canCreateBean(String beanName) {
         return false;

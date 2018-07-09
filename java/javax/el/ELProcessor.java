@@ -90,7 +90,7 @@ public class ELProcessor {
                     context, "elProcessor.defineFunctionNullParams"));
         }
 
-        // Check the imports
+        // 检查引用
         Class<?> clazz = context.getImportHandler().resolveClass(className);
 
         if (clazz == null) {
@@ -117,8 +117,7 @@ public class ELProcessor {
             }
             if (method.getName().equals(sig.getName())) {
                 if (sig.getParamTypeNames() == null) {
-                    // Only a name provided, no signature so map the first
-                    // method declared
+                    // 只提供一个名称，没有签名；所以映射声明的第一个方法
                     manager.mapFunction(prefix, function, method);
                     return;
                 }
@@ -164,16 +163,16 @@ public class ELProcessor {
 
 
     /**
-     * Map a method to a function name.
+     * 将方法映射到函数名称。
      *
-     * @param prefix    Function prefix
-     * @param function  Function name
-     * @param method    Method
+     * @param prefix    函数前缀(Function prefix)
+     * @param function  函数名称
+     * @param method    方法
      *
      * @throws NullPointerException
-     *              If any of the arguments are null
+     *              如果任何参数为null
      * @throws NoSuchMethodException
-     *              If the method is not static
+     *              如果方法不是静态的
      */
     public void defineFunction(String prefix, String function, Method method)
             throws java.lang.NoSuchMethodException {
@@ -185,7 +184,7 @@ public class ELProcessor {
 
         int modifiers = method.getModifiers();
 
-        // Check for public method as well as being static
+        // 检查公共方法以及静态方法
         if (!Modifier.isStatic(modifiers) || !Modifier.isPublic(modifiers)) {
             throw new NoSuchMethodException(Util.message(context,
                     "elProcessor.defineFunctionInvalidMethod", method.getName(),
@@ -220,9 +219,7 @@ public class ELProcessor {
                 parameterTypeNames = null;
             } else {
                 String returnTypeAndName = methodName.substring(0, paramIndex).trim();
-                // Assume that the return type and the name are separated by
-                // whitespace. Given the use of trim() above, there should only
-                // be one sequence of whitespace characters.
+                // 假设返回类型和名称由空格隔开。鉴于上面使用trim()，应该只有一个空格字符序列。
                 int wsPos = -1;
                 for (int i = 0; i < returnTypeAndName.length(); i++) {
                     if (Character.isWhitespace(returnTypeAndName.charAt(i))) {
@@ -236,13 +233,13 @@ public class ELProcessor {
                 name = returnTypeAndName.substring(wsPos).trim();
 
                 String paramString = methodName.substring(paramIndex).trim();
-                // We know the params start with '(', check they end with ')'
+                // 我们都知道 params 以'('开始， 他们检查到 ')' 就结束
                 if (!paramString.endsWith(")")) {
                     throw new NoSuchMethodException(Util.message(context,
                             "elProcessor.defineFunctionInvalidParameterList",
                             paramString, methodName, className));
                 }
-                // Trim '(' and ')'
+                // 修剪 '(' 和 ')'
                 paramString = paramString.substring(1, paramString.length() - 1).trim();
                 if (paramString.length() == 0) {
                     parameterTypeNames = EMPTY_STRING_ARRAY;
@@ -271,7 +268,7 @@ public class ELProcessor {
                         }
                         boolean isPrimitive = PRIMITIVES.contains(parameterTypeName);
                         if (isPrimitive && dimension > 0) {
-                            // When in an array, class name changes for primitive
+                            // 在数组中，类名更改为基元(primitive)
                             switch(parameterTypeName)
                             {
                                 case "boolean":
@@ -299,7 +296,7 @@ public class ELProcessor {
                                     parameterTypeName = "S";
                                     break;
                                 default:
-                                    // Should never happen
+                                    // 不应该发生
                                     break;
                             }
                         } else  if (!isPrimitive &&
@@ -316,7 +313,7 @@ public class ELProcessor {
                             parameterTypeName = clazz.getName();
                         }
                         if (dimension > 0) {
-                            // Convert to array form of class name
+                            // 转换为类名的数组形式(Convert to array form of class name)
                             StringBuilder sb = new StringBuilder();
                             for (int j = 0; j < dimension; j++) {
                                 sb.append('[');
@@ -345,9 +342,9 @@ public class ELProcessor {
         }
 
         /**
-         * @return <code>null</code> if just the method name was specified, an
-         *         empty List if an empty parameter list was specified - i.e. ()
-         *         - otherwise an ordered list of parameter type names
+         * @return 如果只指定了方法名称则为<code>null</code> ， 如果指定了空参数列表，则为空List
+         *         - 即 ()
+         *         - 否则是参数类型名称的有序列表
          */
         public String[] getParamTypeNames() {
             return parameterTypeNames;

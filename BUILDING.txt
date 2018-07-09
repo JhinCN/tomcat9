@@ -16,141 +16,113 @@
 ================================================================================
 
             ====================================================
-            Building The Apache Tomcat @VERSION_MAJOR_MINOR@ Servlet/JSP Container
+            编译Apache Tomcat @ VeluoMyMaRoRySub @ Servlet /JSP容器
             ====================================================
 
-This subproject contains the source code for Tomcat @VERSION_MAJOR_MINOR@, a container that
-implements the Servlet 4.0, JSP 2.3, EL 3.0, WebSocket 1.1 and JASPIC 1.1
-specifications from the Java Community Process <http://www.jcp.org/>.
+该子项目包含了Tomcat @VERSION_MAJOR_MINOR@的源代码，它是一个
+实现了Java Community Process <http://www.jcp.org/>规定的
+Servlet 4.0，JSP 2.3，EL 3.0，WebSocket 1.1和JASPIC 1.1规范的容器。
 
-Note: If you just need to run Apache Tomcat, it is not necessary to build
-it. You may simply download a binary distribution. It is cross-platform.
-Read RUNNING.txt for the instruction on how to run it.
+请注意：如果你只需要去运行Apache Tomcat，就不必去编译它。
+你可以简单的去下载分发(distribution)的二进制程序。它是跨平台的(cross-platform)。
+阅读 RUNNING.txt，它可以指导(instruction)你如何运行Tomcat。
 
-In order to build a binary distribution version of Apache Tomcat from a
-source distribution, do the following:
+为了从分发(distribution)的源代编译Apache Tomcat的二进制分发版本(distribution version)，请执行以下操作：
 
 
-(1) Download and Install a Java Development Kit
+(1) 下载并安装一个Java 开发者工具包(JDK)
 
- 1. If the JDK is already installed, skip to (2).
+ 1. 如果JDK已经安装，请前往步骤(2).
 
- 2. Download a version 8 of Java Development Kit (JDK) release (use the
-    latest update available for your chosen version) from one of:
+ 2. 从下列其中一个下载Java开发工具包（JDK）版本8
+    （使用适用于您所选版本的最新更新版）：
 
         http://www.oracle.com/technetwork/java/javase/downloads/index.html
         http://openjdk.java.net/install/index.html
-        or another JDK vendor.
+        或另一个JDK 供应商(vendor).
 
-    Note regarding later versions of Java:
+    关于(regarding)更高版本的Java的注意事项：
 
-      As documented elsewhere, one of components in Apache Tomcat includes
-      a private copy of the Apache Commons DBCP library.
+      如其他地方所述(As documented elsewhere),
+      Apache Tomcat中的组件之一包含Apache Commons DBCP库的私有副本(a private copy)。
 
-      The JDBC interfaces implemented by DBCP frequently change in non-backwards
-      compatible ways between versions of the Java SE specification. Therefore,
-      it is likely that DBCP will only compile with the specific version of Java
-      listed above and that compilation will fail if a later version of Java is
-      used.
+      由DBCP实现的JDBC接口经常在Java SE规范版本之间以非向后(non-backwards)兼容(compatible)的方式
+      频繁(frequently)进行更改。 因此，
+      DBCP很可能只会使用上面列出的特定版本的Java进行编译，如果使用更高版本的Java，编译可能将失败。
 
-      See Apache Commons DBCP project web site for more details on
-      available versions of the library and its requirements,
+      请参阅Apache Commons DBCP项目网站以获取(available)有关该库及其要求的可用版本的更多详细信息(details)，
 
         http://commons.apache.org/dbcp/
 
- 3. Install the JDK according to the instructions included with the release.
+ 3. 根据(according)发行版附带的说明(instructions)安装JDK。
 
- 4. Set an environment variable JAVA_HOME to the pathname of the directory
-    into which you installed the JDK release.
+ 4. 将环境变量(environment variable)JAVA_HOME设置为安装JDK版本的目录的路径名。
 
 
-(2) Install Apache Ant version 1.9.5 or later on your computer.
+(2) 在计算机上安装版本1.9.5或更高版本的Apache Ant。
 
- 1. If Apache Ant version 1.9.5 or later is already installed on your
-    computer, skip to (3).
+ 1. 如果计算机上已安装Apache Ant 1.9.5或更高版本，请跳至（3）。
 
- 2. Download a binary distribution of Ant from:
+ 2. 从以下网址下载Ant的二进制发行版：
 
         http://ant.apache.org/bindownload.cgi
 
- 3. Unpack the binary distribution into a convenient location so that the
-    Ant release resides in its own directory (conventionally named
-    "apache-ant-[version]").
+ 3. 将二进制分发解包到一个方便的位置，
+    以便Ant发行版放置在它自己的目录中（通常(conventionally)设置为“apache-ant-[版本]”）。
 
-    For the purposes of the remainder of this document, the symbolic name
-    "${ant.home}" is used to refer to the full pathname of the release
-    directory.
+    为了本文剩余部分(remainder)的目的(purposes)，符号名称“$ {ant.home}”用于指代发行版目录的完整路径名。
 
- 4. Create an ANT_HOME environment variable to point the directory
-    ${ant.home}.
+ 4. 创建一个ANT_HOME环境变量来指向$ {ant.home}目录。
 
- 5. Modify the PATH environment variable to include the directory
-    ${ant.home}/bin in its list.  This makes the "ant" command line script
-    available, which will be used to actually perform the build.
+ 5. 修改PATH环境变量以在其列表中包含${ant.home}/bin目录。 
+    这就可以操作“ant”命令行脚本，这将用于实际执行编译。
 
 
-(3) Building Tomcat @VERSION_MAJOR_MINOR@
+(3) 编译 Tomcat @VERSION_MAJOR_MINOR@
 
-(3.1) Checkout or obtain the source code for Tomcat @VERSION_MAJOR_MINOR@
+(3.1) 签出或获取 Tomcat @VERSION_MAJOR_MINOR@的源代码
 
-Checkout the source using SVN, selecting a tag for released version or
-trunk for the current development code, or download and unpack a source
-package.
-
- *  Tomcat SVN repository URL:
+你可以使用SVN签出源代码，可以是发行版的一个版本或者是当前开发版的主分支，或者去下载解压源代码包。
+ *  Tomcat SVN 仓库 URL:
 
         http://svn.apache.org/repos/asf/tomcat/tc@VERSION_MAJOR_MINOR@.x/trunk/
 
- *  Source packages can be downloaded from:
+ *  源代码包可以从下面的地址下载:
 
         http://tomcat.apache.org/download-@VERSION_MAJOR@0.cgi
 
-The location where the source has been placed will be further referred as
-${tomcat.source}.
+放置源代码的位置将被进一步称为${tomcat.source}。
 
-The Tomcat local build process does not modify line-endings. The svn repository
-is configured so that all files will be checked out with the line-ending
-appropriate for the current platform. When using a source package you should
-ensure that you use the source package that has the appropriate line-ending
-for your platform:
+Tomcat本地编译过程(local build process)不会修改行尾。被配置的svn存储库，将便于在所有文件检出时，
+选择适合当前平台的换行符。当使用源码包时，你应该拨正你使用的源码包对你当前平台有合适的换行符：
 
   zip    -> CRLF
   tar.gz -> LF
 
-Note that the release build process does modify line-endings to ensure that
-each release package has the appropriate line-endings.
+请注意编译发行版过程中会修改行行结束符以确保每个发行版的打包都有适当的行结束符。
 
-(3.2) Building
+(3.2) 编译
 
- 1. The build is controlled by creating a ${tomcat.source}/build.properties
-    file.
+ 1. 通过创建 ${tomcat.source}/build.properties 文件来控制编译过程。
 
-    It is recommended to always create the file, because of unfortunate
-    default value of base.path property. You may start with the following
-    content for the file:
+    推荐始终创建该文件，因为base.path属性有不合适的默认值。你可以从文件的以下内容开始：
 
-        # ----- Default Base Path for Dependent Packages -----
-        # Replace this path with the directory path where dependencies binaries
-        # should be downloaded
-        base.path=/home/me/some-place-to-download-to
+        # ----- 依赖软件包的默认基础路径 -----
+        # 将此路径替换为应下载依赖关系二进制文件的目录路径
+        #
+        base.path=/xxxx/xx/{你要下载存储的位置}
 
- 2. Configure base.path property by adding it to the
-    ${tomcat.source}/build.properties file.
+ 2. 通过将base.path属性添加到$ {tomcat.source} /build.properties文件来配置它。
 
-    The base.path property specifies the place where Tomcat dependencies
-    required by the build are downloaded. It is recommended to place this
-    directory outside of the source tree, so that you do not waste your
-    time re-downloading the libraries.
+    base.path属性指定下载编译Tomcat所需依赖关系的存放位置。 建议将此目录放在源代码树之外，
+    这样就不会浪费时间重新下载这些库。
 
-* NOTE: The default value of the base.path property configures the build script
-  to download the libraries required to build Tomcat to the
-  ${user.home}/tomcat-build-libs directory.
+* 注意：按照base.path属性的默认值配置的脚本，将在编译Tomcat时将库下载到
+  ${user.home}/tomcat-build-libs目录。
 
-* NOTE: Users accessing the Internet through a proxy must use the properties
-  file to indicate to Ant the proxy configuration.
+* 注意：通过代理访问互联网的用户必须使用属性文件向ant表明代理配置。
 
-  The following properties should be added to the ${tomcat.source}/build.properties
-  file.
+  以下属性应该添加到 ${tomcat.source}/build.properties 文件中。
 
         proxy.use=true
         proxy.host=proxy.domain
@@ -158,69 +130,60 @@ each release package has the appropriate line-endings.
         proxy.user=username
         proxy.password=password
 
-  See Apache Ant documentation for the <setproxy> task for details.
+  有关详细信息，请参阅 Apache Ant 文档以获取 <setproxy>（设置代理）相关信息。
 
- 3. Go to the sources directory and run Ant:
+ 3. 前往sources目录并运行Ant：
 
         cd ${tomcat.source}
         ant
 
-    This will execute the "deploy" target in build.xml.
+    这将在build.xml中执行“deploy”目标。(This will execute the "deploy" target in build.xml.)
 
-    Once the build has completed successfully, a usable Tomcat installation
-    will have been produced in the ${tomcat.source}/output/build directory,
-    and can be started and stopped with the usual scripts.
+    一旦编译成功完成，将在 ${tomcat.source}/output/build 目录中生成可用的Tomcat安装，
+    并且可以使用常用脚本启动和停止。
 
-    Note that the build includes Tomcat documentation, which can be found
-    in the output/build/webapps/docs directory.
+    请注意，编译包含Tomcat文档，可在 output/build/webapps/docs 目录中找到它。
 
-    The path of the output directory can be controlled by specifying the
-    "tomcat.output" property in the build.properties file.
+    输出目录的路径可以通过在build.properties文件中指定“tomcat.output”属性来控制。
 
-* NOTE: Do not run the build as the root user. Building and running Tomcat
-  does not require root privileges.
+* 注：在linux系统上不要以root用户身份运行编译Tomcat，编译和运行Tomcat不需要root权限。
 
 
-(4) Updating sources and rebuilding
+(4) 更新源代码并重新编译
 
-It is recommended that you regularly update the downloaded Tomcat @VERSION_MAJOR_MINOR@
-sources using your SVN client.
+建议您定期使用SVN客户端下载更新 Tomcat @VERSION_MAJOR_MINOR@ 源代码。
 
-For a quick rebuild of only modified code you can use:
+要快速重新编译修改过的代码，您可以使用：
 
     cd ${tomcat.source}
     ant
 
 
-(5) Special builds
+(5) 特殊处理(Special builds)
 
-There are several targets in Tomcat build files that are useful to be
-called separately. They build components that you may want to build
-quickly, or ones that are included in the full release and are not built
-during the default "deploy" build.
+在Tomcat编译文件中有几个目标文件是单独编译的。 他们编译你需要快速生成的组件，
+或者包含在完整版本中的组件，而这些组件并不是在默认的“部署(deploy)”编译过程中构建的。
 
-(5.1) Building documentation
+(5.1) 生成文档
 
-The documentation web application is built during the default "deploy"
-build.
+文档Web应用程序是在默认的“部署”编译过程中生成的。
 
-It can be built quickly by using the following commands:
+它可以通过使用以下命令快速生成：
 
     cd ${tomcat.source}
     ant build-docs
 
-The output of this command will be found in the following directory:
+该命令的输出将在以下目录中找到：
 
     output/build/webapps/docs
 
 
-The API documentation (Javadoc) is built during a "release" build. It is
-easy to build it separately by using the following commands:
+API文档（Javadoc）是在“发行”版本中构建的。 通过使用以下命令可以很容易地构建它：
 
     cd ${tomcat.source}
     ant javadoc
 
-The output of this command will be found in the following directories:
+该命令的输出将在以下目录中找到：
 
     output/dist/webapps/docs/api
     output/dist/webapps/docs/elapi
@@ -228,291 +191,252 @@ The output of this command will be found in the following directories:
     output/dist/webapps/docs/servletapi
 
 
-(5.2) Building the extras (commons-logging, webservices etc.)
+(5.2) 编译附加的模块(extras)（公用日志记录(commons-logging)，web服务(webservice)等）
 
-These components are documented on the "Additional Components"
-(extras.html) page of documentation. They are built during a "release"
-build.
+这些组件记录在文档的“其他组件”（extras.html）页面上。 它们是在“发行”版本中编译的。
 
-You can build them by using the following commands:
+您可以使用以下命令构建它们：
 
     cd ${tomcat.source}
     ant extras
 
-(5.3) Building the embedded packages
+(5.3) 编译嵌入式软件包(embedded packages)
 
-These are built during a "release" build.
+这些是在“发行”版本中构建的。
 
-You can build them by using the following commands:
+您可以使用以下命令构建它们：
 
     cd ${tomcat.source}
     ant embed
 
 
-(6) Building a full release (as provided via the ASF download pages)
+(6) 构建完整版本（通过ASF下载页面提供）
 
-    A full release includes the Windows installer which requires a Windows
-    environment to be available to create it. If not building in a Windows
-    environment, the build scripts assume that Wine is available. If this is not
-    the case, the skip.installer property may be set to skip the creation of the
-    Windows installer.
+    完整版本包括Windows安装程序，该安装程序需要Windows环境才能创建它。 
+    如果不是在Windows环境中构建，则构建脚本假定Wine可用。 
+    如果不是这种情况，可以将skip.installer属性设置为跳过创建Windows安装程序。
 
- 1. Configure GPG, if needed
+ 1. 在需要GPG的情况下，配置GPG
 
-    If the released artifacts have to be cryptographically signed with a
-    PGP signature, like the official ASF releases are, the following
-    property can be added to the build.properties file:
+    如果已发行的工件必须使用PGP签名进行加密签名（如官方的ASF发行版），
+    则可将以下属性添加到build.properties文件中：
 
-        # Location of GPG executable (used only for releases)
+        # GPG可执行文件的位置（仅用于发行版）
         gpg.exec=/path/to/gpg
 
-    You do not need it if you do not plan to sign the release.
+    如果您不打算签发该版本，则不需要它。
 
-    If "gpg.exec" property does not point to an existing file, it will be
-    ignored and this feature will be disabled.
+    如果“gpg.exec”属性未指向现有文件，则该属性将被忽略，此功能将被禁用。
 
-    You will be prompted for the GPG passphrase when the release build
-    starts, unless "gpg.passphrase" property is set.
+    除非设置了“gpg.passphrase”属性，否则系统会在发布版本开始时提示您输入GPG密码。
 
- 2. If building the Windows installer
+ 2. 如果编译Windows安装程序
 
-    If running the build in a UAC enabled environment, building the Windows
-    installer requires elevated privileges. The simplest way to do this is to
-    open the command prompt used for the build with the "Run as administrator"
-    option.
+    如果在支持UAC的环境中运行编译，则编译Windows安装程序需要提升权限。 
+    最简单的方法是使用“以管理员身份运行”选项 打开用于构建的命令提示符或powershell。
 
- 3. Configure the code signing service
+ 3. 配置代码签名服务(code signing service)
 
-    ASF committers performing official releases will need to configure the code
-    signing service so that the Windows installer is signed during the build
-    process. The following properties need to be added to the build.properties
-    file:
+    执行正式发布的ASF提交者需要配置代码签名服务(ASF committers performing official releases)，
+    以便在构建过程中签署Windows安装程序。需要将以下属性添加到build.properties文件中：
 
-        # Location of GPG executable (used only for releases)
-        # Code signing of Windows installer
+        # GPG可执行文件的位置（仅用于发行版）
+        # Windows安装程序的代码签名
         do.codesigning=true
         codesigning.user=request-via-pmc
         codesigning.pwd=request-via-pmc
         codesigning.partnercode=request-via-pmc
         codesigning.service=Microsoft Windows Signing
 
-    Release managers will be provided with the necessary credentials by the PMC.
+   发行版管理器(Release managers)将获得PMC提供的必要证书。
 
- 4. Build the release:
+ 4. 编译发行版:
 
     cd ${tomcat.source}
     ant release
 
 
-(7) Tests
+(7) 测试
 
-(7.1) Running Tomcat tests
+(7.1) 运行 Tomcat 测试
 
-Tomcat includes a number of junit tests. The tests are not run when a
-release is built. There is separate command to run them.
+Tomcat包含许多junit测试实例。 构建发行版时不会运行测试。 有单独的命令来运行它们。
 
-To run the testsuite use the following command:
+要运行测试，可以使用以下命令：
 
     cd ${tomcat.source}
     ant test
 
-It is advisable to redirect output of the above command to a file for later
-inspection.
+建议将上述命令的输出重定向到文件以供日后检查。
 
-The JUnit reports generated by the tests will be written to the following
-directory:
+测试生成的JUnit报告将被写入以下目录：
 
     output/build/logs
 
-By default the testsuite is run three times to test 3 different
-implementations of Tomcat connectors: NIO, NIO2 and APR. (If you are not
-familiar with Tomcat connectors, see config/http.html in documentation for
-details).
+默认情况下，测试套件运行三次以测试Tomcat连接器的三种不同实现：NIO，NIO2和APR。
+（如果您不熟悉Tomcat连接器，请参阅文档中的config/http.html以了解详细信息）。
 
-The 3 runs are enabled and disabled individually by the following
-properties, which all are "true" by default:
+这3个运行通过以下属性单独启用和禁用，默认情况下所有属性均为“true”：
 
     execute.test.nio=true
     execute.test.nio2=true
     execute.test.apr=true
 
-The APR connector can be tested only if Tomcat-Native library binaries are
-found by the testsuite. The "test.apr.loc" property specifies the directory
-where the library binaries are located.
+APR连接器只有在测试套件找到Tomcat-Native库二进制文件时才能进行测试。 
+“test.apr.loc”属性指定库二进制文件所在的目录。
 
-By default the "test.apr.loc" property specifies the following location:
+默认情况下，“test.apr.loc”属性指定以下位置：
 
     output/build/bin/native/
 
-If you are on Windows and want to test the APR connector you can put the
-tcnative-1.dll file into ${tomcat.source}/bin/native/ and it will be copied
-into the above directory when the build runs.
+如果您在Windows上并且想要测试APR连接器，
+则可以将tcnative-1.dll文件放入${tomcat.source}/bin/native/，
+并在构建运行时将其复制到上述目录中。
 
 The unit tests include tests of the clustering functionality which require
 multicast to be enabled. There is a simple application provided in the Tomcat
 test source (org.apache.catalina.tribes.TesterMulticast) that can be used to
 check if a machine supports multicast. Notes on enabling multicast for different
 operating systems are provided in the Javadoc for that class.
+单元测试包括需要启用多播的群集功能的测试。 
+在Tomcat测试源（org.apache.catalina.tribes.TesterMulticast）中提供了一个简单的应用程序，
+可用于检查机器是否支持多播。 
+Javadoc为该类提供了关于为不同操作系统启用多播的注意事项。
 
 
-(7.2) Running a single test
+(7.2) 运行单个测试
 
-It is possible to run a single JUnit test class by adding the "test.entry"
-property to the build.properties file. The property specifies the name of
-the test class.
+通过将“test.entry”属性添加到build.properties文件中，可以运行单个JUnit测试类。 
+该属性指定测试类的名称。
 
-For example:
+例如:
 
     test.entry=org.apache.catalina.util.TestServerInfo
 
-It is possible to further limit such run to a number of selected test
-methods by adding "test.entry.methods" property. The property specifies a
-comma-separated list of test case methods.
+通过添加“test.entry.methods”属性，可以进一步将此运行限制为多个选定的测试方法。 
+该属性指定了使用逗号分隔的测试用例方法列表。
 
-For example:
+例如:
 
     test.entry=org.apache.el.lang.TestELArithmetic
     test.entry.methods=testMultiply01,testMultiply02
 
 
-(7.3) Running a set of tests
+(7.3) 运行一组测试
 
-It is possible to run a set of JUnit test classes by adding the "test.name"
-property to the build.properties file. The property specifies an Ant
-includes pattern for the fileset of test class files to run.
+通过将“test.name”属性添加到build.properties文件中，可以运行一组JUnit测试类。 
+该属性指定一个Ant包含的要运行的测试类文件的文件集的模式。
 
-The default value is "**/Test*.java", so all test classes are being
-executed (with few exceptions - see build.xml for several exclude patterns).
+缺省值是 “**/Test*.java”，因此所有测试类都需要执行（除了少数例外 - 请参阅build.xml以了解几种排除模式）。
 
-You can include multiple patterns by concatenating them with a comma (",")
-as the separator.
+您可以通过将逗号（“，”）在连接它们时作为分隔符用来包含多个模式。
 
-For example:
+例如:
 
     test.name=**/TestSsl.java,**/TestWebSocketFrameClientSSL.java
 
-You can exclude specific JUnit test classes by adding the "test.exclude"
-property to the build.properties file. The property specifies an Ant
-excludes pattern for the fileset of test class files to exclude form the run.
-The default value is empty, so no classes are excluded. The syntax is the same
-as for the property "test.name".
+您可以通过将“test.exclude”属性添加到build.properties文件来排除特定的JUnit测试类。
+该属性指定一个Ant排除不需要运行的测试类文件的文件集。
+缺省值为空，因此不排除任何类。 语法与“test.name”属性相同。
 
 
-(7.4) Other configuration options
+(7.4) 其他配置选项
 
- 1. It is possible to configure the directory where JUnit reports are
- written to. It is configured by "test.reports" property. The default
- value is
+ 1. 必须配置Junit测试报告写入的目录。 该配置选项需要通过 "test.reports" 属性来进行配置。
+ 默认值是
 
         output/build/logs
 
- 2. It is possible to enable generation of access log file when the tests
- are run. This is off by default and can be enabled by the following
- property:
+ 2. 测试运行时可以启用访问日志文件的生成。
+   这在默认情况下是关闭的，可以通过以下属性启用：
 
         test.accesslog=true
 
- The "access_log.<date>" file will be written to the same directory as
- JUnit reports,
+ “access_log.<date>”文件将被写入与JUnit报告相同的目录，
 
         output/build/logs
 
- 3. The testsuite respects logging configuration as configured by
- ${tomcat.source}/conf/logging.properties
+ 3. 测试包遵守由 ${tomcat.source}/conf/logging.properties 配置的日志配置
 
- The log files will be written to the temporary directory used by the
- tests,
+ 日志文件将被写入测试使用的临时目录，
 
         output/test-tmp/logs
 
- 4. It is possible to configure formatter used by JUnit reports.
- Configuration properties are "junit.formatter.type",
- "junit.formatter.extension" and "junit.formatter.usefile".
+ 4. 可以配置JUnit报告输出的格式所使用的程序。
+  配置属性是“junit.formatter.type”，
+  “junit.formatter.extension”和“junit.formatter.usefile”。
 
- For example the following property disables generation of separate report
- files:
+例如，以下属性禁止生成单独的报告文件：
 
         junit.formatter.usefile=false
 
- 5. It is possible to speed up testing by letting JUnit to run several
- tests in parallel.
+ 5. 通过让JUnit并行运行多个测试，可以加快测试速度。
 
- This is configured by setting "test.threads" property. The recommended
- value is one thread per core.
+ 这是通过设置“test.threads”属性进行配置的。 建议的值是每个核心一个线程。
 
- 6. Optional support is provided for the Cobertura code coverage tool.
+ 6. 为Cobertura代码覆盖工具提供可选支持。
 
-NOTE: Cobertura is licensed under GPL v2 with parts of it being under
-      Apache License v1.1. See http://cobertura.sf.net for details. Using it
-      during Tomcat build is optional and is off by default.
+注意：Cobertura是获得GPL v2的软件，部分应用Apache License v1.1。 
+有关详细信息，请参阅http://cobertura.sf.net。 
+在Tomcat构建期间使用它是可选的，默认情况下是关闭的。
 
- Cobertura can be enabled using the following properties:
+ Cobertura可以使用以下属性启用：
 
         test.cobertura=true
         test.threads=1
 
- Using Cobertura currently requires setting test.threads configuration
- property to the value of 1. Setting that property to a different value
- will disable code coverage.
+ 使用Cobertura目前需要配置test.threads属性为1。
+ 将该属性设置为不为1的值将禁用Cobertura代码覆盖工具。
 
- The report files by default are written to
+ 默认情况下报告文件会写入
 
         output/coverage
 
- 7. The performance tests are written to run reasonably powerful machines (such
-    as a developer may use day to day) assuming no other resource hungry
-    processes are running.
+ 7. 假设没有其他资源耗尽的进程正在运行，
+ 编写运行性能测试来检测机器的功能和能力是否强大（例如开发人员可能会每天使用）。
+ （The performance tests are written to run reasonably powerful machines 
+ (such as a developer may use day to day) assuming no other resource 
+ hungry processes are running.）
 
-    These assumptions are not always true (e.g. on CI systems running in a
-    virtual machine) so the performance tests may be disabled by using the
-    following property:
+    这些假设并非总是如此（例如，在虚拟机中运行的CI系统上），因此可以通过使用以下属性禁用性能测试：
 
         test.excludePerformance=true
 
- 8. Some tests include checks that the access log valve entries are as expected.
-    These checks include timings. On slower / loaded systems these checks will
-    often fail. The checks may be relaxed by using the following property:
+ 8. 一些测试包括检查访问日志阀条目是否符合预期。
+    这些检查包括时间校验。 在较慢/负载较大的系统上，这些检查通常会失败。 通过使用以下属性可以放宽检查：
 
         test.relaxTiming=true
 
- 9. It is known that some platforms (e.g. OSX El Capitan) require IPv4 to
-    be the default for the multicast tests to work. This is configured by
-    the following property:
+ 9. 众所周知，某些平台（例如OSX El Capitan）需要IPv4作为组播测试工作的默认设置。 这由以下属性配置：
 
         java.net.preferIPv4Stack=true
 
- 10. It is possible to control whether the output of the tests is displayed
-     on the console or not. By default it is displayed and can be disabled
-     by the following property:
+ 10. 可以控制测试的输出是否显示在控制台上。 默认情况下，它会显示，并可以通过以下属性禁用：
 
         test.verbose=true
 
-(8) Source code checks
+(8) 源代码检查
 
 (8.1) Checkstyle
 
-NOTE: Checkstyle is licensed under LGPL. Using Checkstyle during Tomcat
-      build is optional and is off by default.
+注意：Checkstyle是遵循LGPL许可的软件。 
+在Tomcat构建过程中使用Checkstyle是可选的，默认情况下是关闭的。
 
-      See http://checkstyle.sourceforge.net/ for more information.
+      访问 http://checkstyle.sourceforge.net/ 以获取更多信息.
 
-Tomcat comes with a Checkstyle configuration that tests its source code
-for certain conventions, like presence of the license header.
+Tomcat带有一个Checkstyle配置，用于测试其源代码是否符合某些约定，如许可证头的存在。
 
-To enable Checkstyle, add the following property to build.properties file:
+要启用Checkstyle，请将以下属性添加到build.properties文件中：
 
     execute.validate=true
 
-Once Checkstyle is enabled, the check will be performed automatically
-during the build. The check is run before compilation of the source code.
+一旦启用Checkstyle，检查将在build期间自动执行。 该检查会在编译源代码之前运行。
 
-To speed-up repeated runs of this check, a cache is configured. The cache
-is located in the following directory:
+为了加速此检查的重复运行，配置了缓存。 缓存位于以下目录中：
 
     output/res/checkstyle
 
-It is possible to run the check separately by calling the "validate"
-target. The command is:
+可以通过调用“验证”目标(target)单独运行检查。 该命令是：
 
     cd ${tomcat.source}
     ant -Dexecute.validate=true validate
@@ -520,42 +444,38 @@ target. The command is:
 
 (8.2) FindBugs
 
-NOTE: FindBugs is licensed under LGPL. Using Findbugs during Tomcat build is
-      optional and is off by default.
+注：FindBugs是遵循LGPL许可的软件。 
+在Tomcat构建过程中使用Findbugs是可选项，默认情况下是关闭的。
 
-      See http://findbugs.sourceforge.net/ for more information.
+      访问 http://findbugs.sourceforge.net/ 以获取更多信息.
 
-To enable FindBugs, add the following property to build.properties file:
+要启用FindBugs，请将以下属性添加到build.properties文件中：
 
     execute.findbugs=true
 
-To compile Tomcat classes and generate a FindBugs report, call the
-"findbugs" target. For example:
+编译Tomcat类并生成FindBugs报告，请调用“findbugs”目标。 例如：
 
     cd ${tomcat.source}
     ant -Dexecute.findbugs=true findbugs
 
-The report file by default is written to
+默认情况下，报告文件会写入
 
     output/findbugs
 
 
-(8.3) End-of-line conventions check
+(8.3) 行尾约定检查
 
-You usually would not need to run this check. You can skip this section.
+您通常不需要运行此检查。 你可以跳过这一节。
 
-Apache Tomcat project has convention that all of its textual source files,
-stored in Subversion repository, are marked with Subversion property
-"svn:eol-style" with value of "native". This convention makes the editing
-of source code on different platforms easier.
+Apache Tomcat项目的约定是，
+其存储在Subversion(SVN)存储库中的所有文本源文件都标有Subversion(SVN)属性“svn:eol-style”，其值为“native”。 
+这个约定使得在不同平台上的源代码的编辑更容易。
 
-This test is used by developers to check that the source code adheres to
-this convention. It verifies that the ends of lines in textual files are
-appropriate for the operating system where it is run. The idea is to run
-this check regularly on two different platforms and notify developers when
-an inconsistency is detected.
+开发人员使用此测试来检查源代码是否符合此惯例。
+它验证文本文件中行的末尾是否适合运行它的操作系统。
+这个想法是定期在两个不同的平台上运行此检查，并在检测到不一致时通知开发人员。
 
-The command to run this test is:
+运行此测试的命令是：
 
     cd ${tomcat.source}
     ant validate-eoln

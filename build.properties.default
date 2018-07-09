@@ -16,57 +16,55 @@
 # -----------------------------------------------------------------------------
 # build.properties.sample
 #
-# This is an example "build.properties" file, used to customize building
-# Tomcat for your local environment.  It defines the location of all external
-# modules that Tomcat depends on.  Copy this file to "build.properties"
-# in the top-level source directory, and customize it as needed.
+# 这是"build.properties"的示例文件，
+# 用于在你的本地环境自定义编译Tomcat，
+# 它定义Tomcat所依赖的所有外部模块的位置。
+# 将此文件复制到顶级源目录中的"build.properties"，
+# 并根据需要进行自定义。
 # -----------------------------------------------------------------------------
 
-# ----- Version Control Flags -----
+# ----- 版本 控制 标志 -----
 version.major=9
 version.minor=0
 version.build=8
 version.patch=0
 version.suffix=
 
-# ----- Build control flags -----
-# Note enabling validation uses Checkstyle which is LGPL licensed
+# ----- 编译 控制 标志 -----
+# 注意启用验证使用具有LGPL许可证的检查样式
 execute.validate=false
 execute.test.nio=true
 execute.test.nio2=true
-# Still requires APR/native library to be present
+# 仍然需要 APR/native 本地库存在
 execute.test.apr=true
-# Stop testing if a failure occurs
+# 如果发生故障，请停止测试
 test.haltonfailure=false
-# Activate AccessLog during testing
+# 在测试期间激活AccessLog
 test.accesslog=false
-# Display the tests output on the console
+# 在控制台上显示测试输出
 test.verbose=true
 
-# Number of parallel threads to use for testing. The recommended value is one
-# thread per core.
-# Note: Cobertura code coverage currently requires this to be set to 1. Setting
-#       a value above one will disable code coverage if enabled.
+# 用于测试的并行线程数。 建议的值是每个核心一个线程。
+# 注意：Cobertura代码覆盖率(code coverage)目前要求将其设置为1.如果启用，将值设置为大于1将禁用代码覆盖率
+# (Setting a value above one will disable code coverage if enabled.)
 test.threads=1
 
-# Note the Cobertura code coverage tool is GPLv2 licensed
+# 请注意，Cobertura代码覆盖工具是GPLv2许可的
 test.cobertura=false
 
-# Note the FindBugs is LGPL licensed
+# 请注意FindBugs是LGPL许可的
 execute.findbugs=false
 
-# Some platforms (e.g. OSX El Capitan) require IPv4 to be the default for the
-# multicast tests to work
+# 某些平台（例如OSX El Capitan）要求IPv4作为 多播测试工作的默认设置
 java.net.preferIPv4Stack=false
 
-# Specify the default (true) else the empty string will be used which
-# effectively changes the setting to false
+# 指定默认值（true），否则将使用空字符串，将该设置有效地更改为false
 org.apache.tomcat.util.net.NioSelectorShared=true
 
-# Location of GPG executable (used only for releases)
+# GPG可执行文件的位置（仅用于发行版）
 gpg.exec=/path/to/gpg
 
-# Code signing of Windows installer
+# Windows安装程序的代码签名
 do.codesigning=false
 codesigning.user=request-via-pmc
 codesigning.pwd=request-via-pmc
@@ -75,18 +73,17 @@ codesigning.keyStore=request-via-pmc
 codesigning.keyStorePassword=request-via-pmc
 codesigning.service=Microsoft Windows Signing
 
-# ----- Settings to use when downloading files -----
+# ----- 下载文件时使用的设置 -----
 trydownload.httpusecaches=true
 
-# ----- Default Base Path for Dependent Packages -----
-# Please note this path must be absolute, not relative,
-# as it is referenced with different working directory
-# contexts by the various build scripts.
+# ----- 从属软件包的默认基础路径 -----
+# 请注意，此路径必须是绝对的，而不是相对的，
+# 因为它由各种编译脚本通过不同的工作目录上下文来引用。
 base.path=${user.home}/tomcat-build-libs
 
 compile.debug=true
 
-# Do not pass -deprecation (-Xlint:deprecation) flag to javac
+# 不要将-deprecation（-Xlint：deprecation）标志传递给javac
 compile.deprecation=false
 
 base-apache.loc.1=http://www.apache.org/dyn/closer.lua?action=download&filename=
@@ -97,10 +94,10 @@ base-tomcat.loc.1=${base-apache.loc.1}/tomcat
 base-tomcat.loc.2=${base-apache.loc.2}/tomcat
 
 base-sf.loc=https://downloads.sourceforge.net
-# repo.maven.apache.org is the same as repo2.maven.org
+# repo.maven.apache.org与repo2.maven.org相同
 base-maven.loc=https://repo.maven.apache.org/maven2
 
-# Mirror, was used when there were problems with the main SF downloads site
+# 当主要SF下载站点出现问题时使用Mirror
 # base-sf.loc=https://sunet.dl.sourceforge.net
 
 # ----- Webservices - JAX RPC -----
@@ -116,16 +113,16 @@ wsdl4j-lib.loc=${base-maven.loc}/wsdl4j/wsdl4j/${wsdl4j-lib.version}/wsdl4j-${ws
 wsdl4j-lib.jar=${wsdl4j-lib.home}/wsdl4j-${wsdl4j-lib.version}.jar
 
 # ----- Eclipse JDT, version 4.7 or later -----#
-# See https://wiki.apache.org/tomcat/JDTCoreBatchCompiler before updating
+# 更新前请参阅https://wiki.apache.org/tomcat/JDTCoreBatchCompiler
 jdt.version=4.7.3a
 jdt.release=R-4.7.3a-201803300640
 jdt.home=${base.path}/ecj-${jdt.version}
 jdt.jar=${jdt.home}/ecj-${jdt.version}.jar
-# The download will be moved to the archive area eventually. We are taking care of that in advance.
+# 下载将最终移到归档区域。 我们正在提前处理。
 jdt.loc.1=http://archive.eclipse.org/eclipse/downloads/drops4/${jdt.release}/ecj-${jdt.version}.jar
 jdt.loc.2=http://download.eclipse.org/eclipse/downloads/drops4/${jdt.release}/ecj-${jdt.version}.jar
 
-# ----- Tomcat native library -----
+# ----- Tomcat本地库 -----
 tomcat-native.version=1.2.16
 tomcat-native.home=${base.path}/tomcat-native-${tomcat-native.version}
 tomcat-native.tar.gz=${tomcat-native.home}/tomcat-native.tar.gz
