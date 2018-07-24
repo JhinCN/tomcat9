@@ -39,8 +39,8 @@ Apache Software 基金会(Foundation)的商标。
 ### 支持和邮件列表信息
 
 * 免费社区支持可通过
-[tomcat-users]（http://tomcat.apache.org/lists.html#tomcat-users）电子邮件列表和
-一个专用的[IRC channel]（http://tomcat.apache.org/irc.html）（#tomcat on
+[tomcat-users](http://tomcat.apache.org/lists.html#tomcat-users) 电子邮件列表和
+一个专用的[IRC channel](http://tomcat.apache.org/irc.html)（#tomcat on
 Freenode）。
 
 * 如果您想免费获得运行Apache Tomcat的支持，请参阅资源页面[here](http://tomcat.apache.org/findhelp.html)。
