@@ -27,7 +27,7 @@ Apache Software 基金会(Foundation)的商标。
 
 截至此版本发布日期的可用文档包含在tomcat附带的docs webapp中。 
 您可以通过启动tomcat并在浏览器中访问http//localhost:8080/docs/来访问该webapp。
-最新的文档可以在这里找到http://tomcat.apache.org/tomcat-9.0-doc/。
+最新的文档可以在这里找到http://tomcat.apache.org/tomcat-9.0-doc/ 。
 
 ### 安装
 请参阅 [RUNNING.txt](RUNNING.txt) 来获取更多信息.
