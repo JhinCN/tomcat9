@@ -102,49 +102,41 @@ JRE_HOME变量用于指定JRE的位置。 JAVA_HOME变量用于指定JDK的位�
 注意：请勿使用JAVA_OPTS指定内存限制。 对于用于停止Tomcat的小进程，您不需要太多内存。 
 这些设置属于CATALINA_OPTS。
 
-Another frequently used variable is CATALINA_PID (on *nix only). It
-specifies the location of the file where process id of the forked Tomcat
-java process will be written. This setting is optional. It will enable the
-following features:
+另一个经常使用的变量是CATALINA_PID（仅限 *nix）。 
+它指定pid文件的位置，其中将写入fork的Tomcat的java的进程ID。 此设置是可选的。 它将启用以下功能：
 
- *  better protection against duplicate start attempts and
- *  allows forceful termination of Tomcat process when it does not react to
-    the standard shutdown command.
+ *  对重复的启动尝试进行更好的保护
+ *  当没有对标准shutdown命令的响应时，允许强制终止Tomcat进程。
 
+(3.4) 使用“setenv”脚本（可选，推荐）
 
-(3.4) Using the "setenv" script (optional, recommended)
+除了CATALINA_HOME和CATALINA_BASE之外，
+所有环境变量都可以在“setenv”脚本中指定。
+ 该脚本放在CATALINA_BASE/bin或CATALINA_HOME/bin目录中，
+ 并命名为setenv.bat（在Windows上）或setenv.sh（在*nix上）。 
+ 该文件必须是可读的。
 
-Apart from CATALINA_HOME and CATALINA_BASE, all environment variables can
-be specified in the "setenv" script. The script is placed either into
-CATALINA_BASE/bin or into CATALINA_HOME/bin directory and is named
-setenv.bat (on Windows) or setenv.sh (on *nix). The file has to be
-readable.
+默认情况下，setenv脚本文件不存在。 
+如果CATALINA_BASE和CATALINA_HOME中都存在脚本文件，则首选CATALINA_BASE中的脚本文件。
 
-By default the setenv script file is absent. If the script file is present
-both in CATALINA_BASE and in CATALINA_HOME, the one in CATALINA_BASE is
-preferred.
+例如，要配置JRE_HOME和CATALINA_PID变量，可以创建以下脚本文件：
 
-For example, to configure the JRE_HOME and CATALINA_PID variables you can
-create the following script file:
-
-On Windows, %CATALINA_BASE%\bin\setenv.bat:
+在Windows上, %CATALINA_BASE%\bin\setenv.bat:
 
   set "JRE_HOME=%ProgramFiles%\Java\jre8"
   exit /b 0
 
-On *nix, $CATALINA_BASE/bin/setenv.sh:
+在*nix上, $CATALINA_BASE/bin/setenv.sh:
 
   JRE_HOME=/usr/java/latest
   CATALINA_PID="$CATALINA_BASE/tomcat.pid"
 
 
-The CATALINA_HOME and CATALINA_BASE variables cannot be configured in the
-setenv script, because they are used to locate that file.
+无法在setenv脚本中配置CATALINA_HOME和CATALINA_BASE变量，
+因为它们用于查找该文件（注：指setenv.sh文件或者setenv.bat文件）。
 
-All the environment variables described here and the "setenv" script are
-used only if you use the standard scripts to launch Tomcat. For example, if
-you have installed Tomcat as a service on Windows, the service wrapper
-launches Java directly and does not use the script files.
+只有在使用标准脚本启动Tomcat时，才会使用此处描述的所有环境变量和“setenv”脚本。
+例如，如果您已在Windows上将Tomcat安装为服务，则服务包装器将直接启动Java，而不使用脚本文件。
 
 
 (4) Start Up Tomcat
