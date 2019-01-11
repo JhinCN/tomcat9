@@ -139,59 +139,57 @@ JRE_HOME变量用于指定JRE的位置。 JAVA_HOME变量用于指定JDK的位�
 例如，如果您已在Windows上将Tomcat安装为服务，则服务包装器将直接启动Java，而不使用脚本文件。
 
 
-(4) Start Up Tomcat
+(4) 启动 Tomcat
 
-(4.1) Tomcat can be started by executing one of the following commands:
+(4.1) 可以通过执行以下命令之一来启动Tomcat：
 
-  On Windows:
+  在 Windows上:
 
       %CATALINA_HOME%\bin\startup.bat
 
-    or
+    或者
 
       %CATALINA_HOME%\bin\catalina.bat start
 
-  On *nix:
+  在 *nix上:
 
       $CATALINA_HOME/bin/startup.sh
 
-    or
+    或者
 
       $CATALINA_HOME/bin/catalina.sh start
 
-(4.2) After startup, the default web applications included with Tomcat will be
-      available by visiting:
+(4.2) 启动后，Tomcat附带的默认Web应用程序将通过访问：
 
       http://localhost:8080/
 
-(4.3) Further information about configuring and running Tomcat can be found in
-      the documentation included here, as well as on the Tomcat web site:
+(4.3) 有关配置和运行Tomcat的更多信息，请参见此处包含的文档以及Tomcat网站：
 
       http://tomcat.apache.org/
 
 
-(5) Shut Down Tomcat
+(5) 关闭 Tomcat
 
-(5.1) Tomcat can be shut down by executing one of the following commands:
+(5.1) 可以通过执行以下命令之一来关闭Tomcat：
 
-  On Windows:
+  在 Windows上:
 
       %CATALINA_HOME%\bin\shutdown.bat
 
-    or
+    或者
 
       %CATALINA_HOME%\bin\catalina.bat stop
 
-  On *nix:
+  在 *nix上:
 
       $CATALINA_HOME/bin/shutdown.sh
 
-    or
+    或者
 
       $CATALINA_HOME/bin/catalina.sh stop
 
 ==================================================
-Advanced Configuration - Multiple Tomcat Instances
+            高级配置 - 多个Tomcat实例
 ==================================================
 
 In many circumstances, it is desirable to have a single copy of a Tomcat
