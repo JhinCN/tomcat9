@@ -15,7 +15,5 @@
 # limitations under the License.
 # -----------------------------------------------------------------------------
 
-This file is added here so that the directory is not empty and does not
-disappear in Git.
-Whether it is visible in AbstractTestResourceSet tests, depends on
-configuration of mappings in specific test. Thus it is optional.
+此处添加此文件，以便该目录不为空，并且不会在Git中消失。
+它是否在AbstractTestResourceSet测试中可见，取决于特定测试中映射的配置。 因此它是可选的。

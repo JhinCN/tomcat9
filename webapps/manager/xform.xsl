@@ -26,7 +26,7 @@
   <xsl:template match="status">
     <html>
     <head>
-        <TITLE>Tomcat Status</TITLE>
+        <TITLE>Tomcat 状态</TITLE>
         <STYLE type="text/css">
             body, table, tr, td, a, div, span {
                 vertical-align : top;
@@ -34,7 +34,7 @@
         </STYLE>
     </head>
     <body>
-      <div style='font-size:20px;'>Tomcat Status</div>
+      <div style='font-size:20px;'>Tomcat 状态</div>
 
       <xsl:apply-templates select="jvm"/>
       <xsl:apply-templates select="connector"/>
@@ -44,7 +44,7 @@
 
   <xsl:template match="jvm">
    <xsl:apply-templates select="memory"/>
-   <b>Memory Pools</b><br />
+   <b>内存池</b><br />
    <xsl:apply-templates select="memorypool"/>
    <hr />
   </xsl:template>
@@ -52,9 +52,9 @@
   <xsl:template match="memory">
     <table><tr>
              <td><b>JVM:</b></td>
-             <td><b>free:</b> <xsl:value-of select="@free"/></td>
-             <td><b>total:</b> <xsl:value-of select="@total"/></td>
-             <td><b>max:</b> <xsl:value-of select="@max"/></td>
+             <td><b>空闲内存:</b> <xsl:value-of select="@free"/></td>
+             <td><b>总内存:</b> <xsl:value-of select="@total"/></td>
+             <td><b>最大内存:</b> <xsl:value-of select="@max"/></td>
            </tr>
     </table><hr />
   </xsl:template>
