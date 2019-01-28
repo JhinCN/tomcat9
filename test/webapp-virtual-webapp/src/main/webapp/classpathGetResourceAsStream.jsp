@@ -22,7 +22,7 @@ if(path.startsWith("/")) path = path.substring(1);
 java.io.InputStream is = this.getClass().getClassLoader().getResourceAsStream(path);
 if(is==null) {
     response.setStatus(404);
-    response.getWriter().println(path+ " not found in classpath");
+    response.getWriter().println(path+ " 没有在 classpath 中找到");
     return;
 }
 int b;

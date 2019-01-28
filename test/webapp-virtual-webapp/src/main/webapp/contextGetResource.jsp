@@ -21,7 +21,7 @@ String path = request.getParameter("path");
 java.net.URL url = application.getResource(path);
 if(url==null) {
     response.setStatus(404);
-    response.getWriter().println(path+ " not found as context resource");
+    response.getWriter().println(path+ " 找不到上下文资源");
     return;
 }
 java.io.InputStream is = url.openStream();
