@@ -14,6 +14,6 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --%><%--
-  Resource file that is present both in the web application and in the
-  WEB-INF/lib/resources.jar file. The one in the web application should win.
---%><p>'singlequote2.jsp in file system</p>
+  Web应用程序和WEB-INF/lib/resources.jar文件中都存在的资源文件。
+  Web应用程序中的那个应该首先使用。
+--%><p>文件系统中的'singlequote2.jsp</p>

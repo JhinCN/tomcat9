@@ -24,8 +24,7 @@
 
   <display-name>Tomcat Test Application</display-name>
   <description>
-     Used as part of the Tomcat unit tests when a full web application is
-     required.
+     当需要完整的Web应用程序时，用作Tomcat单元测试的一部分。
   </description>
 
   <absolute-ordering/>

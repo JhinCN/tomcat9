@@ -15,6 +15,6 @@
   limitations under the License.
 --%>
 <%--
-  Resource file that is present in the web application only.
+  仅存在于Web应用程序中的资源文件。
 --%>
-<p>resourceE.jsp in the web application</p>
+<p>web应用程序中的resourceE.jsp</p>

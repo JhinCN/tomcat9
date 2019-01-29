@@ -22,17 +22,15 @@
   version="3.0">
 
   <!--
-    WARNING:
-    For the unit tests to work correctly, no security constraints may be
-    configured in the web.xml. A login-config section is permitted but not
-    necessary for the tests. Adding a login-config would require changing the
-    return code checked in the unit tests.
+    警告:
+      为了使单元测试正常工作， web.xml中不能配置任何安全性约束。
+      允许使用login-config部分，但测试不需要。
+      添加login-config需要更改单元测试中检查的返回代码。
   -->
 
   <display-name>Tomcat Test Application</display-name>
   <description>
-     Used as part of the Tomcat unit tests when a full web application is
-     required.
+     当需要完整的Web应用程序时，用作Tomcat单元测试的一部分。
   </description>
 
   <servlet>

@@ -23,15 +23,13 @@
   metadata-complete="true">
 
   <!--
-    WARNING:
-    For the unit tests to work correctly, no login-config may be configured in
-    the web.xml.
+    警告:
+    为了单元测试正常工作, 不能在web.xml中配置login-config。
   -->
 
   <display-name>Tomcat Test Application</display-name>
   <description>
-     Used as part of the Tomcat unit tests when a full web application is
-     required.
+     当需要完整的Web应用程序时，用作Tomcat单元测试的一部分。
   </description>
 
   <security-constraint>

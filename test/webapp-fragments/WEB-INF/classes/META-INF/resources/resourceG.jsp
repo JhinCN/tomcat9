@@ -15,7 +15,7 @@
   limitations under the License.
 --%>
 <%--
-  Resource file that is present both in the web application and in the
-  WEB-INF/lib/resources.jar file. The one in the web application should win.
+  Web?????WEB-INF/lib/resources.jar????????????
+  Web???????????????
 --%>
-<p>resourceG.jsp in WEB-INF/classes</p>
+<p>在WEB-INF/classes中的resourceG.jsp</p>

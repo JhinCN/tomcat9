@@ -15,7 +15,7 @@
   limitations under the License.
 --%>
 <html>
-  <head><title>Protected page</title></head>
+  <head><title>受保护的页面</title></head>
   <body>
     <p>00-OK</p>
   </body>
