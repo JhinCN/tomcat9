@@ -18,7 +18,7 @@
 <%@ page import="org.apache.el.TesterBeanA" %>
 <%@ page import="org.apache.el.TesterBeanB" %>
 <html>
-  <head><title>EL method test cases</title></head>
+  <head><title>EL（表达式）模式测试用例</title></head>
   <body>
     <%
     TesterBeanA beanA = new TesterBeanA();

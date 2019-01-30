@@ -16,7 +16,7 @@
 --%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head><title>Scripting expression test cases</title></head>
+  <head><title>脚本表达式测试用例</title></head>
   <body>
     <p><%= "00-hello world" %></p>
     <p><%= "01-hello \"world" %></p>

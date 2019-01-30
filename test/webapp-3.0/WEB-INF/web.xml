@@ -24,13 +24,10 @@
 
   <display-name>Tomcat Servlet 3.0 Tests</display-name>
   <description>
-    Provides a web application used by the Tomcat unit tests to ensure that
-    Tomcat meets the requirements of the current JSP and Servlet specification
-    for web applications that declare that they follow version 3.0 of the
-    Servlet specification and version 2.2 of the JSP specification. This
-    typically means ensuring that features introduced in later versions of the
-    specification do not change the behaviour of applications that declared an
-    earlier version of the specification.
+    提供Tomcat单元测试使用的Web应用程序，
+    以确保Tomcat满足Web应用程序的当前JSP和Servlet规范的要求，
+    这些Web应用程序声明它们遵循Servlet规范的3.0版和JSP规范的2.2版。 
+    这通常意味着确保在规范的更高版本中引入的功能不会更改声明早期版本规范的应用程序的行为。
   </description>
 
 </web-app>

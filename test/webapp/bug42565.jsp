@@ -16,7 +16,7 @@
 --%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head><title>Bug 42565 test case</title></head>
+  <head><title>Bug 42565测试用例</title></head>
   <body>
     <tags:echo echo="00-${false?true:false}" />
     <tags:echo echo="01-${false?true: false}" />

@@ -16,7 +16,7 @@
 --%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head><title>Misc EL test cases</title></head>
+  <head><title>其他EL表达式测试案例</title></head>
   <body>
     <p>00-\\\"\${'hello world'}</p>
     <p>01-\\\"\\${'hello world'}</p>

@@ -16,7 +16,7 @@
 --%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head><title>Bug 46381 test case</title></head>
+  <head><title>Bug 46381测试用例</title></head>
   <%
   pageContext.setAttribute("foo","hello");
   pageContext.setAttribute("bar","world");

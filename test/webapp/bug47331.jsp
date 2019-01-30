@@ -16,8 +16,8 @@
 --%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head><title>Bug 47331 test case</title></head>
+  <head><title>Bug 47331测试用例</title></head>
   <body>
-    <p>This is a #{'test'}</p>
+    <p>这是一个#{'test'}</p>
   </body>
 </html>

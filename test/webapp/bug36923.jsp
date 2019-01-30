@@ -16,7 +16,7 @@
 --%>
 <%@ page isELIgnored="true" %>
 <html>
-  <head><title>Bug 36923 test case</title></head>
+  <head><title>Bug 36923 测试用例</title></head>
   <body>
     <p>00-${<%= "hello world" %>}</p>
   </body>

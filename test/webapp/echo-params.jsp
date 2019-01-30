@@ -24,7 +24,7 @@ while (params.hasMoreElements()) {
 
     String[] values = request.getParameterValues(param);
     for (String value : values) {
-        // Don't do this in a real webapp - XSS issues
+        // 不要在真正的webapp中执行此操作 - XSS问题
         out.println("<p>" + param + " - " + value + "</p>");
     }
 }
